@@ -8,3 +8,5 @@ tulevaisuudessa. Opiskelija voi myös tarkastella ja ryhmitellä suorituksiaan
 arvosanan/sisällön perusteella. Opiskelija voi poistaa kursseja toivelistaltaan,
 mutta ei suorituksia. Opiskelija voi perua ilmoittautumisensa käynnissä olevalle kurssille,
 jolloin hän ei saa kurssista suoritusmerkintää.
+
+[Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Tietokantakaavio.png)
