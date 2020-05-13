@@ -6,4 +6,5 @@ selailla tarjolla olevia kursseja ja suodattaa niitä sisällön/ajankohdan peru
 Opiskelija voi tallentaa itselleen muistiin kursseja, joita hän haluaisi käydä 
 tulevaisuudessa. Opiskelija voi myös tarkastella ja ryhmitellä suorituksiaan 
 arvosanan/sisällön perusteella. Opiskelija voi poistaa kursseja toivelistaltaan,
-mutta ei suorituksia. 
+mutta ei suorituksia. Opiskelija voi perua ilmoittautumisensa käynnissä olevalle kurssille,
+jolloin hän ei saa kurssista suoritusmerkintää.
