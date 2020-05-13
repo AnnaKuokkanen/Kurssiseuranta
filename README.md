@@ -10,3 +10,14 @@ mutta ei suorituksia. Opiskelija voi perua ilmoittautumisensa käynnissä oleval
 jolloin hän ei saa kurssista suoritusmerkintää.
 
 [Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Tietokantakaavio.png)
+
+##Toimintoja: 
+
+* sisäänkirjautuminen
+* kurssitarjonnan tarkastelu
+* kurssitoivelistan päivittäminen (poisto/lisäys)
+* toivelistan järjestäminen toivotun ominaisuuden perusteella
+* suoritusten tarkastelu
+* suoritusten filtteröinti
+* kurssille ilmoittautuminen
+* ilmoittautumisen peruminen
