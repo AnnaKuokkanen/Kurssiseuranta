@@ -11,7 +11,7 @@ jolloin hän ei saa kurssista suoritusmerkintää.
 
 [Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Tietokantakaavio.png)
 
-##Toimintoja: 
+## Toimintoja: 
 
 * sisäänkirjautuminen
 * kurssitarjonnan tarkastelu
