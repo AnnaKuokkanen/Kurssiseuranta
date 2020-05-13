@@ -1,8 +1,9 @@
-# Tietokantasovellus
+# Kurssiseurantatyökalu
 
-Kurssiseurantatyökalun avulla opiskelija voi sisäänkirjautuneena tarkastella
+Kurssiseurantatyökalun avulla opiskelija voi sisäänkirjautuneena tarkastella omia
 käynnissäolevia kursseja, tulevia kursseja ja suorituksia. Opiskelija voi
 selailla tarjolla olevia kursseja ja suodattaa niitä sisällön/ajankohdan perusteella.
 Opiskelija voi tallentaa itselleen muistiin kursseja, joita hän haluaisi käydä 
 tulevaisuudessa. Opiskelija voi myös tarkastella ja ryhmitellä suorituksiaan 
-arvosanan/sisällön perusteella. 
+arvosanan/sisällön perusteella. Opiskelija voi poistaa kursseja toivelistaltaan,
+mutta ei suorituksia. 
