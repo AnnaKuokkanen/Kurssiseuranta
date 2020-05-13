@@ -9,7 +9,7 @@ arvosanan/sisällön perusteella. Opiskelija voi poistaa kursseja toivelistaltaa
 mutta ei suorituksia. Opiskelija voi perua ilmoittautumisensa käynnissä olevalle kurssille,
 jolloin hän ei saa kurssista suoritusmerkintää.
 
-[Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Tietokantakaavio.png)
+[Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/Tietokantakaavio.png)
 
 ## Toimintoja: 
 
