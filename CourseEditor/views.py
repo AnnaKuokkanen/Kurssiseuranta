@@ -5,5 +5,14 @@ from CourseEditor import app
 def index():
     return render_template("index.html")
 
+@app.route("/plan.html")
 def plan():
     return render_template("plan.html")
+
+@app.route("/grades.html")
+def grades():
+    return render_template("grades.html")
+
+@app.route("/courses.html")
+def courses():
+    return render_template("courses.html")
