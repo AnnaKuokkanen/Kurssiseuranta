@@ -1,5 +1,7 @@
 # Kurssiseurantatyökalu
 
+[Kurssiseurantatyökaluun](https://courseeditor.herokuapp.com/)
+
 Kurssiseurantatyökalun avulla opiskelija voi sisäänkirjautuneena tarkastella omia
 käynnissäolevia kursseja, tulevia kursseja ja suorituksia. Opiskelija voi
 selailla tarjolla olevia kursseja ja suodattaa niitä sisällön/ajankohdan perusteella.
