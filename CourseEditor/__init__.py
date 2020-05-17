@@ -9,6 +9,6 @@ db = SQLAlchemy(app)
 
 from CourseEditor import views
 
-from CourseEditor.courses import models
+from CourseEditor.users import models
 
 db.create_all()
