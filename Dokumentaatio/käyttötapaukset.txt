@@ -1,13 +1,13 @@
-##Käyttäjänä haluan kirjautua sisään sovellukseen.
+Käyttäjänä haluan kirjautua sisään sovellukseen.
 
-##Käyttäjänä haluan tarkastella tarjolla olevia kursseja.
+Käyttäjänä haluan tarkastella tarjolla olevia kursseja.
 
-##Käyttäjänä haluan lisätä kursseja toivelistaani.
+Käyttäjänä haluan lisätä kursseja toivelistaani.
 
-##Käyttäjänä haluan poistaa kursseja toivelistaltani.
+Käyttäjänä haluan poistaa kursseja toivelistaltani.
 
-##Käyttäjänä haluan ilmoittautua kursseille.
+Käyttäjänä haluan ilmoittautua kursseille.
 
-##Käyttäjänä haluan tarkastella suorituksiani.
+Käyttäjänä haluan tarkastella suorituksiani.
 
-##Käyttäjänä haluan filtteröidä kursseja ja suorituksia ajan ja sisällön perusteella.
+Käyttäjänä haluan filtteröidä kursseja ja suorituksia ajan ja sisällön perusteella.
