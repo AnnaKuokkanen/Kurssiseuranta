@@ -6,6 +6,10 @@ from CourseEditor.users.models import User
 def users_login():
     return render_template("users/login.html")
 
+@app.route("/users/menu.html")
+def users_menu():
+    return render_template("users/menu.html")
+
 @app.route("/users/new.html")
 def users_form():
     return render_template("users/new.html")
