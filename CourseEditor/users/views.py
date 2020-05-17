@@ -14,7 +14,7 @@ def users_menu():
 def users_form():
     return render_template("users/new.html")
 
-@app.route("/users/", methods=["POST"])
+@app.route("/users/new.html", methods=["POST"])
 def users_create():
     u = User(request.form.get("user"),
             request.form.get("pin"),
