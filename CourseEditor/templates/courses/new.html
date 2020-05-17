@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>
+    Uusi kurssi
+  </h1>
+  <form method="POST" action="{{ url_for('courses_create') }}">
+    <label for="name">Nimi:</label><br>
+    <input type="text"  name="name"><br>
+    <label for="content">Sisältö:</label><br>
+    <input type="text" name="content"><br>
+    <label for="time">Ajankohta:</label><br>
+    <input type="text" name="time"><br>
+    <input type="submit" value="Lisää"/>
+  </form>
+  
+{% endblock %}
