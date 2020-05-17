@@ -1,6 +1,6 @@
 from CourseEditor import db
 
-class Course(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
