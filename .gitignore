@@ -1,3 +1,4 @@
 venv
 CourseEditor/__pycache__
 CourseEditor/courses/__pycache__
+courses.db
