@@ -2,14 +2,12 @@ from CourseEditor import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-    onupdate=db.func.current_timestamp())
+    user = db.Column(db.String(144), nullable=False)
+    pin = db.Column(db.String(144), nullable=False)
+    fname = db.Column(db.String(144), nullable=False)
+    lname = db.Column(db.String(144), nullable=False)
 
-    name = db.Column(db.String(144), nullable=False)
-    done = db.Column(db.Boolean, nullable=False)
-
-    def __init__(self, fname, lname, user, pin):
+    def __init__(self, user, pin, fname, lname):
         self.fname = fname
         self.lname = lname
         self.user = user

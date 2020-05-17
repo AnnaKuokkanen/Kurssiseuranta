@@ -1,5 +1,6 @@
-from CourseEditor import app
+from CourseEditor import app, db
 from flask import render_template, request
+from CourseEditor.users.models import User
 
 @app.route("/users/new.html")
 def tasks_form():
@@ -7,9 +8,12 @@ def tasks_form():
 
 @app.route("/users/", methods=["POST"])
 def users_create():
-    print(request.form.get("fname"))
-    print(request.form.get("lname"))
-    print(request.form.get("user"))
-    print(request.form.get("pin"))
+    u = User(request.form.get("user"),
+            request.form.get("pin"),
+            request.form.get("fname"),
+            request.form.get("lname"))
+
+    db.session().add(u)
+    db.session().commit()
   
     return "Kiitos!"
