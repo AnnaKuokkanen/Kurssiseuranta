@@ -2,6 +2,6 @@ venv
 CourseEditor/__pycache__
 CourseEditor/courses/__pycache__
 CourseEditor/plans/__pycache__
-CourseEditor/users/__pycache
+CourseEditor/users/__pycache__
 CourseEditor/users.db
 
