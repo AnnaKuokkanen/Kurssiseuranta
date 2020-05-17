@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>
+    Rekisteröidy
+  </h1>
+  <form method= "POST" action="{{ url_for('users_create') }}">
+    <label for="user">Käyttäjätunnus:</label><br>
+    <input type="text" id="fname" name="fname" value=""><br>
+    <label for="pin">Salasana:</label><br>
+    <input type="text" id="lname" name="lname" value=""><br><br>
+    <label for="fname">Etunimi:</label><br>
+    <input type="text" id="lname" name="lname" value=""><br><br>
+    <label for="lname">Sukunimi:</label><br>
+    <input type="text" id="lname" name="lname" value=""><br><br>
+  </form>
+  <a href="/">
+    <button>Rekisteröidy</button>
+  </a>
+  
+{% endblock %}

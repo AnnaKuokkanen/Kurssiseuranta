@@ -9,6 +9,8 @@ class User(db.Model):
     name = db.Column(db.String(144), nullable=False)
     done = db.Column(db.Boolean, nullable=False)
 
-    def __init__(self, name):
-        self.name = name
-        self.done = False
+    def __init__(self, fname, lname, user, pin):
+        self.fname = fname
+        self.lname = lname
+        self.user = user
+        self.pin = pin
