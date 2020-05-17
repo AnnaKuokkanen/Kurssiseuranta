@@ -3,7 +3,7 @@ from flask import render_template, request
 from CourseEditor.users.models import User
 
 @app.route("/users/new.html")
-def tasks_form():
+def users_form():
     return render_template("users/new.html")
 
 @app.route("/users/", methods=["POST"])
@@ -16,4 +16,4 @@ def users_create():
     db.session().add(u)
     db.session().commit()
   
-    return "Kiitos!"
+    return render_template("/index.html")
