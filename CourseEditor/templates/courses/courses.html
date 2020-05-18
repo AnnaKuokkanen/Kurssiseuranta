@@ -4,7 +4,7 @@
   <h1>
     Kurssit:
   </h1>  
-  <table>
+  <table method="GET" action="{{ url_for('courses_list') }}">
     <tr>
       <th>Nimi</th>
       <th>Sisältö</th>
@@ -17,8 +17,11 @@
       <td>{{ course.time }}</td>
     </tr>
     {% endfor %}
-  </table>
+  </table><br>
   <a href="/courses/new.html">
     <button>Lisää uusi kurssi</button>
-  </a>  
+  </a><br> 
+  <a href="/users/menu.html">
+    <button>Takaisin valikkoon</button>
+  </a> 
 {% endblock %}

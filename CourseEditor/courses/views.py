@@ -2,10 +2,6 @@ from CourseEditor import app, db
 from flask import render_template, request
 from CourseEditor.courses.models import Course
 
-@app.route("/courses/courses.html") 
-def courses_show():
-    return render_template("courses/courses.html")
-
 @app.route("/courses/grades.html") 
 def grades_show():
     return render_template("courses/grades.html")
@@ -13,6 +9,10 @@ def grades_show():
 @app.route("/courses/new.html")
 def courses_form():
     return render_template("courses/new.html")
+
+@app.route("/courses/courses.html", methods=["GET"])
+def courses_list():
+    return render_template("courses/courses.html", courses = Course.query.all())
 
 @app.route("/courses/new.html", methods=["POST"])
 def courses_create():
@@ -23,4 +23,4 @@ def courses_create():
     db.session().add(c)
     db.session().commit()
 
-    return render_template("/courses/courses.html")
+    return render_template("courses/courses.html")
