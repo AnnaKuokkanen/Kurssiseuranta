@@ -1,5 +1,5 @@
 from CourseEditor import app, db
-from flask import render_template, request
+from flask import redirect, render_template, request, url_for
 from CourseEditor.courses.models import Course
 
 @app.route("/courses/grades.html") 
@@ -23,4 +23,4 @@ def courses_create():
     db.session().add(c)
     db.session().commit()
 
-    return render_template("courses/courses.html")
+    return redirect(url_for("courses_list"))
