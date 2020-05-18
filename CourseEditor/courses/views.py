@@ -25,7 +25,17 @@ def courses_create():
 
     return redirect(url_for("courses_list"))
 
+@app.route("/courses/update.html/<course_id>", methods=["GET"])
+def courses_update_form(course_id):
+    return render_template("courses/update.html")
+
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 def courses_update(course_id):
     c = Course.query.get(course_id)
-    return render_template("courses/update.html")
+    c.name = request.form.get("name")
+    c.content = request.form.get("content")
+    c.time = request.form.get("time")
+
+    db.session().commit()
+
+    return redirect(url_for("courses_list"))

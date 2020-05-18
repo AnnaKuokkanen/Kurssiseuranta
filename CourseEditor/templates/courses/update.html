@@ -4,7 +4,7 @@
   <h1>
     Päivitä kurssin tietoja
   </h1>
-  <form>
+  <form method="POST" action="{{ url_for('courses_update', course_id=1) }}">
     <label for="name">Nimi:</label><br>
     <input type="text"  name="name"><br>
     <label for="content">Sisältö:</label><br>
