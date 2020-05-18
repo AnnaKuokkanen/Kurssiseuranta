@@ -4,5 +4,5 @@ CourseEditor/courses/__pycache__
 CourseEditor/plans/__pycache__
 CourseEditor/users/__pycache__
 CourseEditor/users.db
-
+CourseEditor/courses.db
 
