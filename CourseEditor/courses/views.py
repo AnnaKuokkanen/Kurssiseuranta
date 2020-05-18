@@ -6,6 +6,10 @@ from CourseEditor.courses.models import Course
 def courses_list():
     return render_template("courses/courses.html", courses = Course.query.all())
 
+@app.route("/course/courses.html", methods=["POST"])
+def courses_search():
+    return render_template("courses/list.html", courses = Course.query.filter_by(name=request.form.get("name")))
+
 @app.route("/courses/grades.html") 
 def grades_show():
     return render_template("courses/grades.html")
