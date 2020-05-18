@@ -13,7 +13,7 @@ jolloin hän ei saa kurssista suoritusmerkintää.
 
 [Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/Tietokantakaavio.png)
 
-[Käyttötapaukset](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.txt)
+[Käyttötapaukset](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.md)
 
 ## Toimintoja: 
 
