@@ -25,7 +25,7 @@ def courses_create():
 
     return redirect(url_for("courses_list"))
 
-@app.route("/courses/update.html", methods=["POST"])
-def courses_update():
-    #c = Course.query.get(course_id)
+@app.route("/courses/update.html/<course_id>", methods=["POST"])
+def courses_update(course_id):
+    c = Course.query.get(course_id)
     return render_template("courses/update.html")

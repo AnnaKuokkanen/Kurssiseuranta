@@ -16,7 +16,7 @@
       <td>{{ course.content }}</td>
       <td>{{ course.time }}</td>
       <td>
-        <form>
+        <form method="POST" action="{{ url_for('courses_update', course_id=course.id) }}">
           <input type="submit" value="Päivitä"/>
         </form> 
       </td>
