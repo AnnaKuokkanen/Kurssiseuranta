@@ -23,4 +23,4 @@ def courses_create():
     db.session().add(c)
     db.session().commit()
 
-    return "Lisätty!"
+    return render_template("/courses/courses.html")
