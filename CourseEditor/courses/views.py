@@ -27,7 +27,8 @@ def courses_create():
 
 @app.route("/courses/update.html/<course_id>", methods=["GET"])
 def courses_update_form(course_id):
-    return render_template("courses/update.html")
+    id = course_id
+    return render_template("courses/update.html", course = Course.query.get(id))
 
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 def courses_update(course_id):

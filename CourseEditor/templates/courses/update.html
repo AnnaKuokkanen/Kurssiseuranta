@@ -4,15 +4,15 @@
   <h1>
     Päivitä kurssin tietoja
   </h1>
-  <form method="POST" action="{{ url_for('courses_update', course_id=1) }}">
-    <label for="name">Nimi:</label><br>
-    <input type="text"  name="name"><br>
-    <label for="content">Sisältö:</label><br>
-    <input type="text" name="content"><br>
-    <label for="time">Ajankohta:</label><br>
-    <input type="text" name="time"><br>
-    <input type="submit" value="Päivitä"/>
-  </form><br>
+    <form method="POST" action="{{ url_for('courses_update', course_id=course.id) }}">
+      <label for="name">Nimi:</label><br>
+      <input type="text"  name="name"><br>
+      <label for="content">Sisältö:</label><br>
+      <input type="text" name="content"><br>
+      <label for="time">Ajankohta:</label><br>
+      <input type="text" name="time"><br>
+      <input type="submit" value="Päivitä"/>
+    </form><br>
   <a href="/users/menu.html">
     <button>Takaisin valikkoon</button>
   </a>
