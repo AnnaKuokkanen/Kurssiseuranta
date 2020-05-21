@@ -10,6 +10,14 @@ def courses_list():
 def courses_search():
     return render_template("courses/list.html", courses = Course.query.filter_by(name=request.form.get("name")))
 
+@app.route("/course/courses.htl/<course_id>", methods=["POST"])
+def courses_delete(course_id):
+    c = Course.query.get(course_id)
+    db.session.delete(c)
+    db.session().commit()
+
+    return redirect(url_for("courses_list"))
+
 @app.route("/courses/grades.html") 
 def grades_show():
     return render_template("courses/grades.html")
