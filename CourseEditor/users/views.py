@@ -16,10 +16,10 @@ def users_form():
 
 @app.route("/users/new.html", methods=["POST"])
 def users_create():
-    u = User(request.form.get("user"),
-            request.form.get("pin"),
-            request.form.get("fname"),
-            request.form.get("lname"))
+    u = User(request.form.get("username"),
+            request.form.get("password"),
+            request.form.get("firstname"),
+            request.form.get("lastname"))
 
     db.session().add(u)
     db.session().commit()

@@ -2,13 +2,13 @@ from CourseEditor import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user = db.Column(db.String(144), nullable=False)
-    pin = db.Column(db.String(144), nullable=False)
-    fname = db.Column(db.String(144), nullable=False)
-    lname = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False)
+    password = db.Column(db.String(144), nullable=False)
+    firstname = db.Column(db.String(144), nullable=False)
+    lastname = db.Column(db.String(144), nullable=False)
 
-    def __init__(self, user, pin, fname, lname):
-        self.fname = fname
-        self.lname = lname
-        self.user = user
-        self.pin = pin
+    def __init__(self, username, password, firstname, lastname):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.username = username
+        self.password = password
