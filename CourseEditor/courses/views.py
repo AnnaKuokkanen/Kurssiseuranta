@@ -9,7 +9,8 @@ def courses_list():
 
 @app.route("/course/courses.html", methods=["POST"])
 def courses_search():
-    return render_template("courses/list.html", courses = Course.query.filter_by(name=request.form.get("name")))
+    form = SearchForm(request.form)
+    return render_template("courses/list.html", courses = Course.query.filter_by(name=form.name.data))
 
 @app.route("/course/courses.htl/<course_id>", methods=["POST"])
 def courses_delete(course_id):
