@@ -13,6 +13,8 @@
         <td>
           {{ form.name }}
         </td>
+      </tr>
+      <tr>
         <td>
           <ul>
             {% for error in form.name.errors %}
@@ -20,6 +22,8 @@
             {% endfor %}
           </ul>
         </td>
+      </tr>
+      <tr>  
         <td colspan="2">
           <input type="submit" value="Hae"/>
         </td>
