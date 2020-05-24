@@ -2,14 +2,14 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, validators
 
 class NewForm(FlaskForm):
-    name = StringField("Nimi")
-    content = StringField("Sisältö")
-    time = StringField("Ajankohta")
+    name = StringField("Nimi", [validators.Length(min=2, max=144)])
+    content = StringField("Sisältö", [validators.Length(min=2, max=144)])
+    time = StringField("Ajankohta", [validators.Length(min=2, max=144)])
     class Meta:
         csrf = False
 
 class SearchForm(FlaskForm):
-    name = StringField("Hae nimen perusteella", [validators.Length(min=2)])
+    name = StringField("Hae nimen perusteella", [validators.Length(min=2, max=144)])
     class Meta:
         csrf = False
 

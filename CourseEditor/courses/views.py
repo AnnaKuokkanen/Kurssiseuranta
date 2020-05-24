@@ -10,7 +10,7 @@ def courses_list():
 @app.route("/course/courses.html", methods=["POST"])
 def courses_search():
     form = SearchForm(request.form)
-    
+
     if not form.validate():
         return render_template("courses/courses.html", form = form)
 
@@ -35,6 +35,10 @@ def courses_form():
 @app.route("/courses/new.html", methods=["POST"])
 def courses_create():
     form = NewForm(request.form)
+
+    if not form.validate():
+        return render_template("courses/new.html", form = form)
+
     c = Course(form.name.data, 
             form.content.data, 
             form.time.data)
@@ -52,6 +56,7 @@ def courses_update_form(course_id):
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 def courses_update(course_id):
     form = UpdateForm(request.form)
+
     c = Course.query.get(course_id)
     c.name = form.name.data
     c.content = form.content.data
