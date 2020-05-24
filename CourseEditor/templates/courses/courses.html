@@ -5,9 +5,19 @@
     Kurssit:
   </h1>  
   <form method="POST" action="{{ url_for('courses_search') }}">
-    <label for="name">Hae nimen perusteella:</label><br>  
-    <input type="text" name="name"/>
-    <input type="submit" value="Hae"/>
+    <table>
+      <tr>
+        <td>
+          {{ form.name.label }}
+        </td>
+        <td>
+          {{ form.name }}
+        </td>
+        <td colspan="2">
+          <input type="submit" value="Hae"/>
+        </td>
+      </tr>
+    </table>
   </form>
   <table method="GET" action="{{ url_for('courses_list') }}">
     <tr>
