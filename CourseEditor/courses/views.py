@@ -55,7 +55,11 @@ def courses_update_form(course_id):
 
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 def courses_update(course_id):
+    id = course_id
     form = UpdateForm(request.form)
+
+    if not form.validate():
+        return render_template("courses/update.html", form = form, course = Course.query.get(id))
 
     c = Course.query.get(course_id)
     c.name = form.name.data
