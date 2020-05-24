@@ -1,6 +1,7 @@
 from CourseEditor import app, db
-from flask import redirect, render_template, request, url_for
 from CourseEditor.courses.models import Course
+from CourseEditor.courses.forms import NewForm
+from flask import redirect, render_template, request, url_for
 
 @app.route("/courses/courses.html", methods=["GET"])
 def courses_list():
@@ -24,13 +25,14 @@ def grades_show():
 
 @app.route("/courses/new.html")
 def courses_form():
-    return render_template("courses/new.html")
+    return render_template("courses/new.html", form = NewForm())
 
 @app.route("/courses/new.html", methods=["POST"])
 def courses_create():
-    c = Course(request.form.get("name"), 
-            request.form.get("content"), 
-            request.form.get("time"))
+    form = NewForm(request.form)
+    c = Course(form.name.data, 
+            form.content.data, 
+            form.time.data)
         
     db.session().add(c)
     db.session().commit()
