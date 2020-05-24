@@ -1,11 +1,11 @@
 from CourseEditor import app, db
 from CourseEditor.courses.models import Course
-from CourseEditor.courses.forms import NewForm
+from CourseEditor.courses.forms import NewForm, SearchForm
 from flask import redirect, render_template, request, url_for
 
 @app.route("/courses/courses.html", methods=["GET"])
 def courses_list():
-    return render_template("courses/courses.html", courses = Course.query.all())
+    return render_template("courses/courses.html", form = SearchForm(), courses = Course.query.all())
 
 @app.route("/course/courses.html", methods=["POST"])
 def courses_search():
