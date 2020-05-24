@@ -1,6 +1,6 @@
 from CourseEditor import app, db
 from CourseEditor.courses.models import Course
-from CourseEditor.courses.forms import NewForm, SearchForm
+from CourseEditor.courses.forms import NewForm, SearchForm, UpdateForm
 from flask import redirect, render_template, request, url_for
 
 @app.route("/courses/courses.html", methods=["GET"])
@@ -42,7 +42,7 @@ def courses_create():
 @app.route("/courses/update.html/<course_id>", methods=["GET"])
 def courses_update_form(course_id):
     id = course_id
-    return render_template("courses/update.html", course = Course.query.get(id))
+    return render_template("courses/update.html", form = UpdateForm(), course = Course.query.get(id))
 
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 def courses_update(course_id):
