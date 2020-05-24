@@ -10,6 +10,10 @@ def courses_list():
 @app.route("/course/courses.html", methods=["POST"])
 def courses_search():
     form = SearchForm(request.form)
+    
+    if not form.validate():
+        return render_template("courses/courses.html", form = form)
+
     return render_template("courses/list.html", courses = Course.query.filter_by(name=form.name.data))
 
 @app.route("/course/courses.htl/<course_id>", methods=["POST"])
