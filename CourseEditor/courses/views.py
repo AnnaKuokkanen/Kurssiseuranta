@@ -46,10 +46,11 @@ def courses_update_form(course_id):
 
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 def courses_update(course_id):
+    form = UpdateForm(request.form)
     c = Course.query.get(course_id)
-    c.name = request.form.get("name")
-    c.content = request.form.get("content")
-    c.time = request.form.get("time")
+    c.name = form.name.data
+    c.content = form.content.data
+    c.time = form.time.data
 
     db.session().commit()
 
