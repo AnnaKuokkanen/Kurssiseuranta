@@ -10,6 +10,10 @@ def users_login():
 @app.route("/users/login.html", methods=["POST"])
 def users_login_form():
     form = LoginForm(request.form)
+
+    if not form.validate():
+        return render_template("users/login.html", form = form)
+
     user = User.query.filter_by(username = form.username.data, password = form.password.data).first()
     if not user:
         return render_template("users/login.html", form = form, 
@@ -29,6 +33,10 @@ def users_form():
 @app.route("/users/new.html", methods=["POST"])
 def users_create():
     form = RegistrationForm(request.form)
+
+    if not form.validate():
+        return render_template("users/new.html", form = form)
+
     u = User(form.firstname.data,
             form.lastname.data,
             form.username.data,
