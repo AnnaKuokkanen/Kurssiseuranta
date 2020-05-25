@@ -6,6 +6,8 @@ class Course(db.Model):
     content = db.Column(db.String(144), nullable=False)
     time = db.Column(db.String(144), nullable=False)
 
+    course_user = db.relationship("Account", backref='course', lazy=True)
+
     def __init__(self, name, content, time):
         self.name = name
         self.content = content

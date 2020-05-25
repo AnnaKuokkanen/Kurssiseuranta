@@ -10,6 +10,8 @@ class User(db.Model):
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
+    course_user = db.relationship("Course", backref='account', lazy=True)
+
     def __init__(self, firstname, lastname, username, password):
         self.firstname = firstname
         self.lastname = lastname
