@@ -9,7 +9,7 @@ from CourseEditor.usercourse.models import UserCourse
 @app.route("/courses/courses.html", methods=["GET"])
 @login_required
 def courses_list():
-    return render_template("courses/courses.html", form = SearchForm(), courses = Course.query.all())
+    return render_template("courses/courses.html", form = SearchForm(), courses = current_user.courses)
 
 @app.route("/course/courses.html", methods=["POST"])
 @login_required
