@@ -1,5 +1,4 @@
 from CourseEditor import db
-from CourseEditor.usercourse import models
 
 class Course(db.Model):
 
@@ -10,8 +9,7 @@ class Course(db.Model):
     content = db.Column(db.String(144), nullable=False)
     time = db.Column(db.String(144), nullable=False)
 
-    #accounts = db.relationship("User", secondary=account_course, backref='course')
-
+    accounts = db.relationship("User", secondary='account_course', backref='course', lazy=True)
 
     def __init__(self, name, content, time):
         self.name = name
