@@ -1,10 +1,22 @@
 from CourseEditor import app, db
-from flask import render_template, request
+from CourseEditor.users.forms import LoginForm
 from CourseEditor.users.models import User
+from flask import render_template, request, url_for, redirect
 
 @app.route("/users/login.html")
 def users_login():
-    return render_template("users/login.html")
+    return render_template("users/login.html", form = LoginForm())
+
+@app.route("/users/login.html", methods=["POST"])
+def users_login_form():
+    form = LoginForm(request.form)
+    user = User.query.filter_by(username = form.username.data, password = form.password.data).first()
+    if not user:
+        return render_template("users/login.html", form = form, 
+                                error = "Käyttäjää ei löydy")
+
+    print("Käyttäjä " + user.username + " tunnistettiin")
+    return redirect(url_for("users_menu"))
 
 @app.route("/users/menu.html")
 def users_menu():

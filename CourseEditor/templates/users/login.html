@@ -4,13 +4,29 @@
   <h1>
     Kirjaudu sisään
   </h1>
-  <form>
-    <label for="username">Käyttäjätunnus:</label><br>
-    <input type="text" name="username"><br>
-    <label for="password">Salasana:</label><br>
-    <input type="password" name="password"><br><br>
+  <form method="POST" action="{{ url_for('users_login_form') }}">
+    <table>
+      <tr>
+        <td>
+          {{ form.username.label }}
+        </td>
+        <td>
+          {{ form.username }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ form.password.label }}
+        </td>
+        <td>
+          {{ form.password }}
+        </td>
+      </tr>
+      <tr>  
+        <td colspan="2">
+          <input type="submit" value="Kirjaudu sisään"/>
+        </td>
+      </tr>
+    </table>
   </form>
-  <a href="/users/menu.html">
-    <button>Kirjaudu</button>
-  </a>
 {% endblock %}
