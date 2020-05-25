@@ -1,5 +1,5 @@
 from CourseEditor import app, db
-from CourseEditor.users.forms import LoginForm
+from CourseEditor.users.forms import LoginForm, RegistrationForm
 from CourseEditor.users.models import User
 from flask import render_template, request, url_for, redirect
 
@@ -24,14 +24,15 @@ def users_menu():
 
 @app.route("/users/new.html")
 def users_form():
-    return render_template("users/new.html")
+    return render_template("users/new.html", form = RegistrationForm())
 
 @app.route("/users/new.html", methods=["POST"])
 def users_create():
-    u = User(request.form.get("username"),
-            request.form.get("password"),
-            request.form.get("firstname"),
-            request.form.get("lastname"))
+    form = RegistrationForm(request.form)
+    u = User(form.firstname.data,
+            form.lastname.data,
+            form.username.data,
+            form.password.data)
 
     db.session().add(u)
     db.session().commit()

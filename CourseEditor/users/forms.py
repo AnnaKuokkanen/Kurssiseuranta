@@ -12,10 +12,10 @@ class LoginForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
 
-    username = StringField("Käyttäjänimi")
-    password = PasswordField("Salasana")
     firstname = StringField("Nimi")
     lastname = StringField("Sukunimi")
+    username = StringField("Käyttäjänimi")
+    password = PasswordField("Salasana")
     
     class Meta:
         csrf = False

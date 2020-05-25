@@ -5,15 +5,45 @@
     Rekisteröidy
   </h1>
   <form method="POST" action="{{ url_for('users_create') }}">
-    <label for="username">Käyttäjätunnus:</label><br>
-    <input type="text"  name="username"><br>
-    <label for="password">Salasana:</label><br>
-    <input type="password" name="password"><br>
-    <label for="firstname">Etunimi:</label><br>
-    <input type="text" name="firstname"><br>
-    <label for="lastname">Sukunimi:</label><br>
-    <input type="text" name="lastname"><br>
-    <input type="submit" value="Rekisteröidy"/>
+    <table>
+      <tr>
+        <td>
+          {{ form.firstname.label }}
+        </td>
+        <td>
+          {{ form.firstname }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ form.lastname.label }}
+        </td>
+        <td>
+          {{ form.lastname }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ form.username.label }}
+        </td>
+        <td>
+          {{ form.username }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ form.password.label }}
+        </td>
+        <td>
+          {{ form.password }}
+        </td>
+      </tr>
+      <tr>  
+        <td colspan="2">
+          <input type="submit" value="Rekisteröidy"/>
+        </td>
+      </tr>
+    </table>
   </form>
   
 {% endblock %}
