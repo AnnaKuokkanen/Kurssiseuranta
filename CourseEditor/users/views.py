@@ -2,6 +2,7 @@ from CourseEditor import app, db
 from CourseEditor.users.forms import LoginForm, RegistrationForm
 from CourseEditor.users.models import User
 from flask import render_template, request, url_for, redirect
+from flask_login import login_user
 
 @app.route("/users/login.html")
 def users_login():
@@ -20,6 +21,7 @@ def users_login_form():
                                 error = "Käyttäjää ei löydy")
 
     print("Käyttäjä " + user.username + " tunnistettiin")
+    login_user(user)
     return redirect(url_for("users_menu"))
 
 @app.route("/users/menu.html")

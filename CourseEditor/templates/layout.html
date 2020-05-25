@@ -6,6 +6,11 @@
   </head>
 
   <body>
+    {% if current_user.is_authenticated %}
+    <p>
+      Kirjautunut nimellä {{ current_user.username }}
+    </p>
+    {% endif %}
     {% block body %}
       <p>
         Seuraa kurssejasi.
