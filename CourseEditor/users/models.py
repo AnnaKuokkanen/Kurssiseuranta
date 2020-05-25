@@ -1,4 +1,5 @@
 from CourseEditor import db
+from CourseEditor.usercourse import models
 
 class User(db.Model):
 
@@ -10,7 +11,7 @@ class User(db.Model):
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
-    course_user = db.relationship("Course", backref='account', lazy=True)
+    #courses = db.relationship("Course", secondary=account_course, backref='account')
 
     def __init__(self, firstname, lastname, username, password):
         self.firstname = firstname
