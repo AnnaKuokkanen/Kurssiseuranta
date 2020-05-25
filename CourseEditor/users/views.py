@@ -2,7 +2,7 @@ from CourseEditor import app, db
 from CourseEditor.users.forms import LoginForm, RegistrationForm
 from CourseEditor.users.models import User
 from flask import render_template, request, url_for, redirect
-from flask_login import login_user, logout_user
+from flask_login import login_required, login_user, logout_user
 
 @app.route("/users/login.html")
 def users_login():
@@ -30,6 +30,7 @@ def users_logout():
     return redirect(url_for("index"))
 
 @app.route("/users/menu.html")
+@login_required
 def users_menu():
     return render_template("users/menu.html")
 
