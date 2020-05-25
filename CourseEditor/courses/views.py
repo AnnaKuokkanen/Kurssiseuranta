@@ -1,8 +1,10 @@
 from CourseEditor import app, db
 from CourseEditor.courses.models import Course
+from CourseEditor.users.models import User
 from CourseEditor.courses.forms import NewForm, SearchForm, UpdateForm
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required
+from flask_login import current_user, login_required
+from CourseEditor.usercourse.models import UserCourse
 
 @app.route("/courses/courses.html", methods=["GET"])
 @login_required
@@ -49,8 +51,12 @@ def courses_create():
     c = Course(form.name.data, 
             form.content.data, 
             form.time.data)
-        
+
     db.session().add(c)
+
+    c.accounts.append(current_user)
+    current_user.courses.append(c)
+    
     db.session().commit()
 
     return redirect(url_for("courses_list"))
