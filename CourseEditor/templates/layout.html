@@ -8,8 +8,11 @@
   <body>
     {% if current_user.is_authenticated %}
     <p>
-      Kirjautunut nimellä {{ current_user.username }}
+      Kirjautunut nimellä {{ current_user.firstname }} {{ current_user.lastname }}
     </p>
+    <a href="{{ url_for('users_logout') }}">
+      <button>Kirjaudu ulos</button>
+    </a>
     {% endif %}
     {% block body %}
       <p>
