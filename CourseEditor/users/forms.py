@@ -1,21 +1,20 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms import PasswordField
+from wtforms import StringField, PasswordField, validators
 
 class LoginForm(FlaskForm):
 
-    username = StringField("Käyttäjänimi")
-    password = PasswordField("Salasana")
+    username = StringField("Käyttäjänimi", validators.Length(min=6, max=144))
+    password = PasswordField("Salasana", validators.Length(min=8, max=144))
 
     class Meta:
         csrf = False
 
 class RegistrationForm(FlaskForm):
 
-    firstname = StringField("Nimi")
-    lastname = StringField("Sukunimi")
-    username = StringField("Käyttäjänimi")
-    password = PasswordField("Salasana")
+    firstname = StringField("Nimi", validators.Length(min=2, max=144))
+    lastname = StringField("Sukunimi", validators.Length(min=2, max=144))
+    username = StringField("Käyttäjänimi", validators.Length(min=6, max=144))
+    password = PasswordField("Salasana", validators.Length(min=8, max=144))
     
     class Meta:
         csrf = False
