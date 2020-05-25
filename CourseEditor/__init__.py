@@ -25,6 +25,8 @@ from CourseEditor.plans import views
 from CourseEditor.users import models
 from CourseEditor.users import views
 
+from CourseEditor.usercourse import models
+
 # Kirjautuminen 
 from CourseEditor.users.models import User
 from os import urandom
