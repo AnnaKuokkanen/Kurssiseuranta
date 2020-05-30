@@ -10,5 +10,5 @@
 
 ### Käyttäjänä haluan filtteröidä listoja ominaisuuksien perusteella.
 
-### Käyttäjänä haluan poistaa kursseja toivelistaltani.
+### Käyttäjänä haluan poistaa lisäämiäni kursseja.  
 
