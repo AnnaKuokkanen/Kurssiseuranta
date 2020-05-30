@@ -17,11 +17,11 @@ jolloin hän ei saa kurssista suoritusmerkintää.
 
 ## Toimintoja: 
 
+* rekisteröityminen
 * sisäänkirjautuminen
-* kurssitarjonnan tarkastelu
-* kurssitoivelistan päivittäminen (poisto/lisäys)
-* toivelistan järjestäminen toivotun ominaisuuden perusteella
-* suoritusten tarkastelu
-* suoritusten filtteröinti
-* kurssille ilmoittautuminen
-* ilmoittautumisen peruminen
+* kurssien tarkastelu
+* kurssien lisääminen
+* kurssien statuksen päivittäminen (sunnitelma/suoritus)
+* kurssilistan päivittäminen (poisto/lisäys)
+* kurssilistan järjestäminen toivotun ominaisuuden perusteella
+* kurssien tarkastelu ja filtteröinti
