@@ -24,9 +24,9 @@ def courses_search():
 @app.route("/course/courses.html/<course_id>", methods=["POST"])
 @login_required
 def courses_delete(course_id):
-    c = Course.query.get(course_id)
+    course_account = UserCourse.query.filter_by(course_id=course_id, user_id=current_user.id)
 
-    db.session.delete(c)
+    db.session.delete(course_account)
     db.session().commit()
 
     return redirect(url_for("courses_list"))
@@ -53,9 +53,9 @@ def courses_create():
             form.content.data, 
             form.time.data)
 
-    db.session().add(c)
     c.accounts.append(current_user)
     current_user.courses.append(c)
+    db.session().add(c)
     
     db.session().commit()
 
