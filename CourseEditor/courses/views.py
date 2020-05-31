@@ -1,5 +1,6 @@
 from CourseEditor import app, db
 from CourseEditor.courses.models import Course
+from CourseEditor.teachers.models import Teacher
 from CourseEditor.users.models import User
 from CourseEditor.courses.forms import NewForm, SearchForm, UpdateForm
 from flask import redirect, render_template, request, url_for
@@ -21,7 +22,7 @@ def courses_search():
 
     return render_template("courses/list.html", courses = Course.query.filter_by(name=form.name.data))
 
-@app.route("/course/courses.htl/<course_id>", methods=["POST"])
+@app.route("/course/courses.html/<course_id>", methods=["POST"])
 @login_required
 def courses_delete(course_id):
     c = Course.query.get(course_id)
@@ -48,9 +49,27 @@ def courses_create():
     if not form.validate():
         return render_template("courses/new.html", form = form)
 
+    planned = False
+    completed = False
+
     c = Course(form.name.data, 
             form.content.data, 
-            form.time.data)
+            form.time.data,
+            planned,
+            completed)
+
+    t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
+
+    if t is None:
+        t = Teacher(form.teacher_firstname.data,
+                form.teacher_lastname.data
+        )
+        db.session().add(t)
+        db.session().commit()
+        t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
+        c.teacher_id = t.id
+    else: 
+        c.teacher_id = t.id
 
     db.session().add(c)
 
