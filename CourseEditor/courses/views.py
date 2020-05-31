@@ -26,10 +26,11 @@ def courses_search():
 @login_required
 def courses_delete(course_id):
     #Not ready, write a custom query
-    course_account = UserCourse.query.filter_by(course_id=course_id, user_id=current_user.id)
 
-    db.session.delete(course_account)
-    db.session().commit()
+    #course_account = UserCourse.query.filter_by(course_id=course_id, user_id=current_user.id)
+
+    #db.session.delete(course_account)
+    #db.session().commit()
 
     return redirect(url_for("courses_list"))
 
@@ -50,11 +51,14 @@ def courses_create():
 
     if not form.validate():
         return render_template("courses/new.html", form = form)
+    
+    c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
 
-    c = Course(form.name.data, 
-            form.content.data, 
-            form.time.data)
-            
+    if c is None:
+        c = Course(form.name.data, 
+                form.content.data, 
+                form.time.data)
+
     t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
 
     if t is None:
@@ -92,9 +96,13 @@ def courses_update(course_id):
         return render_template("courses/update.html", form = form, course = Course.query.get(id))
 
     c = Course.query.get(course_id)
+    t = Teacher.query.get(c.teacher_id)
+
     c.name = form.name.data
     c.content = form.content.data
     c.time = form.time.data
+    t.firstname = form.teacher_firstname.data
+    t.lastname = form.teacher_lastname.data
 
     db.session().commit()
 

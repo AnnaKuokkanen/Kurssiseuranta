@@ -58,6 +58,40 @@
           </td>
         </tr>
         <tr>
+          <td>
+            {{ form.teacher_firstname.label }}
+          </td>
+          <td>
+            {{ form.teacher_firstname }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              {% for error in form.teacher_firstname.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ form.teacher_lastname.label }}
+          </td>
+          <td>
+            {{ form.teacher_lastname }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              {% for error in form.teacher_lastname.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        <tr>
           <td colspan="2">
             <input type="submit" value="Päivitä"/>
           </td>
