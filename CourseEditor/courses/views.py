@@ -59,24 +59,24 @@ def courses_create():
                 form.content.data, 
                 form.time.data)
 
-    t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
-
-    if t is None:
-        t = Teacher(form.teacher_firstname.data,
-                form.teacher_lastname.data
-        )
-        db.session().add(t)
-        db.session().commit()
         t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
-        c.teacher_id = t.id
-    else: 
-        c.teacher_id = t.id
 
-    c.accounts.append(current_user)
-    current_user.courses.append(c)
-    db.session().add(c)
-    
-    db.session().commit()
+        if t is None:
+            t = Teacher(form.teacher_firstname.data,
+                    form.teacher_lastname.data
+            )
+            db.session().add(t)
+            db.session().commit()
+            t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
+            c.teacher_id = t.id
+        else: 
+            c.teacher_id = t.id
+
+        c.accounts.append(current_user)
+        current_user.courses.append(c)
+        db.session().add(c)
+        
+        db.session().commit()
 
     return redirect(url_for("courses_list"))
 
