@@ -22,7 +22,7 @@ from CourseEditor.courses import views
 
 from CourseEditor.plans import views
 
-#from CourseEditor.teachers import models
+from CourseEditor.teachers import models
 
 from CourseEditor.users import models
 from CourseEditor.users import views

@@ -8,6 +8,7 @@ class Course(db.Model):
     name = db.Column(db.String(144), nullable=False)
     content = db.Column(db.String(144), nullable=False)
     time = db.Column(db.String(144), nullable=False)
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'), nullable=False)
 
     accounts = db.relationship('User', secondary='account_course', backref='course', lazy=True)
 
