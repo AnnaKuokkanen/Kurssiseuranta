@@ -9,12 +9,14 @@
       <th>Nimi</th>
       <th>Sisältö</th>
       <th>Ajankohta</th>
+      <td>Opettaja</td>
     </tr>
     {% for course in courses %}
     <tr>
       <td>{{ course.name }}</td>
       <td>{{ course.content }}</td>
       <td>{{ course.time }}</td>
+      <td>{{ course.teacher_id }}</td>
       <td>
         <form method="GET" action="{{ url_for('courses_update_form', course_id=course.id) }}">
           <input type="submit" value="Päivitä"/>
