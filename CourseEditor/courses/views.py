@@ -44,38 +44,45 @@ def courses_form():
 @app.route("/courses/new.html", methods=["POST"])
 @login_required
 def courses_create():
-    # This method will only create a new entry if no identical course exists in database
-    # If only teacher is different, course will not be changed but has to be updated
+    # Bug! Have to write a custom query that only searches through user's courses
+    # Now does not add properly when user has deleted the course once
     form = NewForm(request.form)
 
     if not form.validate():
         return render_template("courses/new.html", form = form)
     
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
+    t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
 
-    if c is None:
+    #if t is not None and c is not None and c.teacher_id == t.id:
+    if (c is None and t is not None) or (c is not None and t is not None and c.teacher_id != t.id):
         c = Course(form.name.data, 
                 form.content.data, 
                 form.time.data)
+        c.teacher_id = t.id
 
+        db.session().add(c)
+       
+    elif t is None:
+        t = Teacher(form.teacher_firstname.data,
+                    form.teacher_lastname.data)
+
+        db.session().add(t)
+        db.session().commit()
         t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
 
-        if t is None:
-            t = Teacher(form.teacher_firstname.data,
-                    form.teacher_lastname.data
-            )
-            db.session().add(t)
-            db.session().commit()
-            t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
-            c.teacher_id = t.id
-        else: 
-            c.teacher_id = t.id
+        c = Course(form.name.data, 
+                form.content.data, 
+                form.time.data)
+        c.teacher_id = t.id
 
+        db.session().add(c)
+    
     c.accounts.append(current_user)
     current_user.courses.append(c)
-    db.session().add(c)
-    
+
     db.session().commit()
+
 
     return redirect(url_for("courses_list"))
 
