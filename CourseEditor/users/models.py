@@ -1,13 +1,11 @@
 from CourseEditor import db
+from CourseEditor.models import Base
 from sqlalchemy.sql import text
 
-class User(db.Model):
+class User(Base):
 
     __tablename__ = "account"
 
-    id = db.Column(db.Integer, primary_key=True)
-    firstname = db.Column(db.String(144), nullable=False)
-    lastname = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
