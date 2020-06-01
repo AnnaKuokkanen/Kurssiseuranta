@@ -98,9 +98,9 @@ def courses_update(course_id):
     t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
 
+    User.remove_row(current_user.id, id)
+    
     if c is None and t is None:
-        User.remove_row(current_user.id, id)
-
         t = Teacher(form.teacher_firstname.data,
                     form.teacher_lastname.data)
 
@@ -123,6 +123,9 @@ def courses_update(course_id):
                     form.time.data)
         c.teacher_id = t.id
 
+        c.accounts.append(current_user)
+        current_user.courses.append(c)
+
         db.session().add(c)
 
     elif t is None and c is not None:
@@ -134,8 +137,14 @@ def courses_update(course_id):
 
         c.teacher_id = t.id
 
+        c.accounts.append(current_user)
+        current_user.courses.append(c)
+
     elif t is not None and c is not None:
         c.teacher_id = t.id
+        
+        c.accounts.append(current_user)
+        current_user.courses.append(c)
 
     db.session().commit()
 
