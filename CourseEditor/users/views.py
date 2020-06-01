@@ -44,14 +44,19 @@ def users_create():
 
     if not form.validate():
         return render_template("users/new.html", form = form)
+    
+    u = User.query.filter_by(username = form.username.data).first()
+    if u:
+        return render_template("users/new.html", form = form, 
+                                error = "Käyttäjänimi käytössä")
+    else:
+        u = User(form.firstname.data,
+                form.lastname.data,
+                form.username.data,
+                form.password.data)
 
-    u = User(form.firstname.data,
-            form.lastname.data,
-            form.username.data,
-            form.password.data)
-
-    db.session().add(u)
-    db.session().commit()
-  
-    return render_template("/index.html")
+        db.session().add(u)
+        db.session().commit()
+    
+        return render_template("/index.html")
 
