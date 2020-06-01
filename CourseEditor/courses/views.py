@@ -46,7 +46,6 @@ def courses_form():
 def courses_create():
     # This method will only create a new entry if no identical course exists in database
     # If only teacher is different, course will not be changed but has to be updated
-    # Problem after deleting course for the first time: it will not show up
     form = NewForm(request.form)
 
     if not form.validate():
@@ -99,6 +98,8 @@ def courses_update(course_id):
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
 
     if c is None and t is None:
+        User.remove_row(current_user.id, id)
+
         t = Teacher(form.teacher_firstname.data,
                     form.teacher_lastname.data)
 
