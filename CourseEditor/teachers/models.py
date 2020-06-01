@@ -7,7 +7,7 @@ class Teacher(db.Model):
     firstname = db.Column(db.String(144), nullable=False)
     lastname = db.Column(db.String(144), nullable=False)
 
-    courses = db.relationship("Course", backref='course', lazy=True)
+    courses = db.relationship("Course", cascade='all, delete-orphan', backref='course', single_parent=True, lazy=True)
 
     def __init__(self, firstname, lastname):
         self.firstname = firstname

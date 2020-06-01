@@ -9,9 +9,9 @@ class Course(db.Model):
     name = db.Column(db.String(144), nullable=False)
     content = db.Column(db.String(144), nullable=False)
     time = db.Column(db.String(144), nullable=False)
-    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'), nullable=False)
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id', ondelete='cascade'), nullable=False)
 
-    accounts = db.relationship('User', secondary='account_course', backref='course', lazy=True)
+    accounts = db.relationship('User', secondary='account_course', cascade='all, delete-orphan', backref='course', single_parent=True, lazy=True)
 
     def __init__(self, name, content, time):
         self.name = name
