@@ -1,4 +1,5 @@
 from CourseEditor import db
+from sqlalchemy.sql import text
 
 class Course(db.Model):
 
@@ -16,3 +17,17 @@ class Course(db.Model):
         self.name = name
         self.content = content
         self.time = time
+
+    @staticmethod 
+    def list_course_and_teacher(user_id):
+        stmt = text("SELECT Course.name, Course.content, Course.time FROM Course"
+                    "LEFT JOIN account_course ON user_id = :user"
+                    "LEFT JOIN Teacher ON Teacher.id = Course.teacher_id").params(user=user_id)
+        
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"name":, "content":, "time":, "firstname":,"lastname":,})
+
+        return response

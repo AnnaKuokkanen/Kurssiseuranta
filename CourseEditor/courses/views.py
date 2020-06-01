@@ -10,6 +10,7 @@ from flask_login import current_user, login_required
 @app.route("/courses/courses.html", methods=["GET"])
 @login_required
 def courses_list():
+    # Insert custom query here
     return render_template("courses/courses.html", form = SearchForm(), courses = current_user.courses)
 
 @app.route("/course/courses.html", methods=["POST"])
