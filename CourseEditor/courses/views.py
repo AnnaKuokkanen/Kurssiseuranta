@@ -10,7 +10,6 @@ from flask_login import current_user, login_required
 @app.route("/courses/courses.html", methods=["GET"])
 @login_required
 def courses_list():
-    # Insert custom query here
     return render_template("courses/courses.html", form = SearchForm(), courses = Course.list_course_and_teacher(current_user.id))
 
 @app.route("/course/courses.html", methods=["POST"])
@@ -21,7 +20,7 @@ def courses_search():
     if not form.validate():
         return render_template("courses/courses.html", form = form)
 
-    return render_template("courses/list.html", courses = Course.query.filter_by(name=form.name.data))
+    return render_template("courses/list.html", courses = Course.find_course_and_teacher(current_user.id, form.name.data))
 
 @app.route("/course/courses.html/<course_id>", methods=["POST"])
 @login_required
