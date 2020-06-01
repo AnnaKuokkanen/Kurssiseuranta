@@ -26,11 +26,8 @@ def courses_search():
 @login_required
 def courses_delete(course_id):
     #Not ready, write a custom query
-
-    #course_account = UserCourse.query.filter_by(course_id=course_id, user_id=current_user.id)
-
-    #db.session.delete(course_account)
-    #db.session().commit()
+    User.remove_row(current_user.id, course_id)
+    db.session().commit()
 
     return redirect(url_for("courses_list"))
 

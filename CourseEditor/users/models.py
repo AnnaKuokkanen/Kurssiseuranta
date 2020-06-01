@@ -1,4 +1,5 @@
 from CourseEditor import db
+from sqlalchemy.sql import text
 
 class User(db.Model):
 
@@ -29,3 +30,8 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod
+    def remove_row(user_id, course_id):
+        stmt = text("DELETE FROM account_course WHERE user_id = :user AND course_id = :course").params(user=user_id, course=course_id)
+        db.engine.execute(stmt)
