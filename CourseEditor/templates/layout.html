@@ -7,14 +7,20 @@
   </head>
 
   <body>
-    {% if current_user.is_authenticated %}
-    <p>
-      Kirjautunut nimellä {{ current_user.firstname }} {{ current_user.lastname }}
-    </p>
-    <a href="{{ url_for('users_logout') }}">
-      <button>Kirjaudu ulos</button>
-    </a>
-    {% endif %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="#">Kurssiseuranta</a>
+      <div class="form-inline mt-2 mt-md-0">
+        {% if current_user.is_authenticated %}
+        <p>
+          <a class="navbar-brand" href="#">Kirjautunut nimellä {{ current_user.firstname }} {{ current_user.lastname }}</a>
+        </p>
+        <a href="{{ url_for('users_logout') }}">
+          <button>Kirjaudu ulos</button>
+        </a>
+        {% endif %}
+      </div>
+    </nav>
+    
     {% block body %}
       <p>
         Seuraa kurssejasi.
