@@ -20,14 +20,14 @@ class Course(db.Model):
 
     @staticmethod 
     def list_course_and_teacher(user_id):
-        stmt = text("SELECT Course.name, Course.content, Course.time FROM Course"
-                    "LEFT JOIN account_course ON user_id = :user"
-                    "LEFT JOIN Teacher ON Teacher.id = Course.teacher_id").params(user=user_id)
+        stmt = text("SELECT Course.name, Course.content, Course.time, Teacher.firstname, Teacher.lastname FROM Course, Teacher "
+                    "LEFT JOIN account_course ON user_id = :user AND course_id = Course.id "
+                    "WHERE Course.teacher_id = Teacher.id").params(user=user_id)
         
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"name":, "content":, "time":, "firstname":,"lastname":,})
+            response.append({"name":row[0], "content":row[1], "time":row[2], "firstname":row[3],"lastname":row[4]})
 
         return response

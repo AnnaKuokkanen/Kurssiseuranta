@@ -11,7 +11,7 @@ from flask_login import current_user, login_required
 @login_required
 def courses_list():
     # Insert custom query here
-    return render_template("courses/courses.html", form = SearchForm(), courses = current_user.courses)
+    return render_template("courses/courses.html", form = SearchForm(), courses = Course.list_course_and_teacher(current_user.id))
 
 @app.route("/course/courses.html", methods=["POST"])
 @login_required
@@ -142,7 +142,7 @@ def courses_update(course_id):
 
     elif t is not None and c is not None:
         c.teacher_id = t.id
-        
+
         c.accounts.append(current_user)
         current_user.courses.append(c)
 

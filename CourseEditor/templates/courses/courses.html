@@ -37,24 +37,26 @@
       <th>Ajankohta</th>
       <th>Opettaja</th>
     </tr>
-    {% for course in courses %}
-    <tr>
-      <td>{{ course.name }}</td>
-      <td>{{ course.content }}</td>
-      <td>{{ course.time }}</td>
-      <td>{{ course.teacher_id }}</td>
-      <td>
-        <form method="GET" action="{{ url_for('courses_update_form', course_id=course.id) }}">
-          <input type="submit" value="Päivitä"/>
-        </form> 
-      </td>
-      <td>
-        <form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}">
-          <input type="submit" value="Poista"/>
-        </form> 
-      </td>
-    </tr>
-    {% endfor %}
+    {% if courses is defined %}
+      {% for course in courses %}
+      <tr>
+        <td>{{ course.name }}</td>
+        <td>{{ course.content }}</td>
+        <td>{{ course.time }}</td>
+        <td>{{ course.firstname }} {{ course.lastname }}</td>
+        <td>
+          <form method="GET" action="{{ url_for('courses_update_form', course_id=course.id) }}">
+            <input type="submit" value="Päivitä"/>
+          </form> 
+        </td>
+        <td>
+          <form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}">
+            <input type="submit" value="Poista"/>
+          </form> 
+        </td>
+      </tr>
+      {% endfor %}
+    {% endif %}
   </table><br>
   <a href="/courses/new.html">
     <button>Lisää uusi kurssi</button>
