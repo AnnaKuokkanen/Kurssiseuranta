@@ -6,6 +6,9 @@
   </h1>
   <i>Käyttäjänimen ja salasanan tulee olla ainakin 8 merkkiä</i>
   <form method="POST" action="{{ url_for('users_create') }}">
+    {% if error is defined %}
+      {{ error }}
+    {% endif %}
     <table>
       <tr>
         <td>

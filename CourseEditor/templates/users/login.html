@@ -5,6 +5,9 @@
     Kirjaudu sisään
   </h1>
   <form method="POST" action="{{ url_for('users_login_form') }}">
+    {% if error is defined %}
+      {{ error }}
+    {% endif %}
     <table>
       <tr>
         <td>
