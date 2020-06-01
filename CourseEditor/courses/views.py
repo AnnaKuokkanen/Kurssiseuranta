@@ -25,7 +25,7 @@ def courses_search():
 @app.route("/course/courses.html/<course_id>", methods=["POST"])
 @login_required
 def courses_delete(course_id):
-    #Not ready, write a custom query
+
     User.remove_row(current_user.id, course_id)
     db.session().commit()
 
@@ -46,6 +46,7 @@ def courses_form():
 def courses_create():
     # This method will only create a new entry if no identical course exists in database
     # If only teacher is different, course will not be changed but has to be updated
+    # Problem after deleting course for the first time: it will not show up
     form = NewForm(request.form)
 
     if not form.validate():
@@ -71,11 +72,11 @@ def courses_create():
         else: 
             c.teacher_id = t.id
 
-        c.accounts.append(current_user)
-        current_user.courses.append(c)
-        db.session().add(c)
-        
-        db.session().commit()
+    c.accounts.append(current_user)
+    current_user.courses.append(c)
+    db.session().add(c)
+    
+    db.session().commit()
 
     return redirect(url_for("courses_list"))
 
