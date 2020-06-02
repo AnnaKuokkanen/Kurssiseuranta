@@ -36,7 +36,7 @@ class Course(db.Model):
     def find_course_and_teacher(user_id, course_name):
         stmt = text("SELECT Course.id, Course.name, Course.content, Course.time, Teacher.firstname, Teacher.lastname FROM Course, Teacher "
                     "LEFT JOIN account_course ON user_id = :user "
-                    "WHERE Course.teacher_id = Teacher.id AND Course.name = :name AND course_id = Course.id").params(user=user_id, name = course_name)
+                    "WHERE Course.teacher_id = Teacher.id AND Course.name = :name AND course_id = Course.id").params(user=user_id, name=course_name)
         
         res = db.engine.execute(stmt)
 
@@ -44,4 +44,17 @@ class Course(db.Model):
         for row in res:
             response.append({"id":row[0], "name":row[1], "content":row[2], "time":row[3], "firstname":row[4],"lastname":row[5]})
 
+        return response
+
+    @staticmethod
+    def check_if_course_and_teacher_exist(teacher_id, course_name, course_content, course_time):
+        stmt = text("SELECT Course.id FROM Course "
+                    "WHERE Course.teacher_id = :id AND Course.name = :name AND Course.content = :content AND Course.time = :time").params(id=teacher_id, name=course_name, content=course_content, time=course_time)
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0]})
+        
         return response
