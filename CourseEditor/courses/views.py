@@ -114,13 +114,14 @@ def courses_update(course_id):
 
     User.remove_row(current_user.id, id)
     
-    if c is None and t is None:
+    if t is None:
         t = Teacher(form.teacher_firstname.data,
                     form.teacher_lastname.data)
 
         db.session().add(t)
         db.session().commit()
-
+    
+    if c is None:
         c = Course(form.name.data,
                     form.content.data,
                     form.time.data)
@@ -130,35 +131,25 @@ def courses_update(course_id):
         current_user.courses.append(c)
 
         db.session().add(c)
+        db.session().commit()
 
-    elif c is None and t is not None:
-        c = Course(form.name.data,
-                    form.content.data,
+        return redirect(url_for("courses_list"))
+
+    course_id = Course.check_if_course_and_teacher_exist(t.id, form.name.data, form.content.data, form.time.data)
+
+    if not course_id:
+        c = Course(form.name.data, 
+                    form.content.data, 
                     form.time.data)
         c.teacher_id = t.id
 
-        c.accounts.append(current_user)
-        current_user.courses.append(c)
-
         db.session().add(c)
 
-    elif t is None and c is not None:
-        t = Teacher(form.teacher_firstname.data,
-                    form.teacher_lastname.data)
-
-        db.session().add(t)
-        db.session().commit()
-
-        c.teacher_id = t.id
-
-        c.accounts.append(current_user)
-        current_user.courses.append(c)
-
-    elif t is not None and c is not None:
-        c.teacher_id = t.id
-
-        c.accounts.append(current_user)
-        current_user.courses.append(c)
+    elif course_id:
+        c = Course.query.get(course_id[0])
+        
+    c.accounts.append(current_user)
+    current_user.courses.append(c)
 
     db.session().commit()
 
