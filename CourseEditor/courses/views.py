@@ -52,47 +52,7 @@ def courses_create():
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
     t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
 
-    if t is None:
-        t = Teacher(form.teacher_firstname.data,
-                    form.teacher_lastname.data)
-
-        db.session().add(t)
-        db.session().commit()
-
-    if c is None:
-        c = Course(form.name.data, 
-            form.content.data, 
-            form.time.data)
-        c.teacher_id = t.id
-
-        db.session().add(c)
-    
-        c.accounts.append(current_user)
-        current_user.courses.append(c)
-
-        db.session().commit()
-
-        return redirect(url_for("courses_list"))
-
-    course_id = Course.check_if_course_and_teacher_exist(t.id, form.name.data, form.content.data, form.time.data)
-
-    if not course_id:
-        c = Course(form.name.data, 
-                    form.content.data, 
-                    form.time.data)
-        c.teacher_id = t.id
-
-        db.session().add(c)
-
-    elif course_id:
-        c = Course.query.get(course_id[0])
-        
-    c.accounts.append(current_user)
-    current_user.courses.append(c)
-
-    db.session().commit()
-
-    return redirect(url_for("courses_list"))
+    return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data)
 
 @app.route("/courses/update.html/<course_id>", methods=["GET"])
 @login_required
@@ -114,33 +74,38 @@ def courses_update(course_id):
 
     User.remove_row(current_user.id, id)
     
+    return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data)
+
+def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, course_content, course_time):
+
     if t is None:
-        t = Teacher(form.teacher_firstname.data,
-                    form.teacher_lastname.data)
+        t = Teacher(teacher_firstname,
+                    teacher_lastname)
 
         db.session().add(t)
         db.session().commit()
-    
+
     if c is None:
-        c = Course(form.name.data,
-                    form.content.data,
-                    form.time.data)
+        c = Course(course_name, 
+            course_content, 
+            course_time)
         c.teacher_id = t.id
 
+        db.session().add(c)
+    
         c.accounts.append(current_user)
         current_user.courses.append(c)
 
-        db.session().add(c)
         db.session().commit()
 
         return redirect(url_for("courses_list"))
 
-    course_id = Course.check_if_course_and_teacher_exist(t.id, form.name.data, form.content.data, form.time.data)
+    course_id = Course.check_if_course_and_teacher_exist(t.id, course_name, course_content, course_time)
 
     if not course_id:
-        c = Course(form.name.data, 
-                    form.content.data, 
-                    form.time.data)
+        c = Course(course_name, 
+                    course_content, 
+                    course_time)
         c.teacher_id = t.id
 
         db.session().add(c)
