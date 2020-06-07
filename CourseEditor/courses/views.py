@@ -1,5 +1,5 @@
 from CourseEditor import app, db
-from CourseEditor.courses.forms import NewForm, SearchForm, UpdateForm
+from CourseEditor.courses.forms import CourseForm, SearchForm
 from CourseEditor.courses.models import Course
 from CourseEditor.teachers.models import Teacher
 from CourseEditor.usercourse.models import UserCourse
@@ -34,12 +34,12 @@ def courses_delete(course_id):
 @app.route("/courses/new.html")
 @login_required
 def courses_form():
-    return render_template("courses/new.html", form = NewForm())
+    return render_template("courses/new.html", form = CourseForm())
 
 @app.route("/courses/new.html", methods=["POST"])
 @login_required
 def courses_create():
-    form = NewForm(request.form)
+    form = CourseForm(request.form)
 
     if not form.validate():
         return render_template("courses/new.html", form = form)
@@ -55,12 +55,12 @@ def courses_update_form(course_id):
     c = Course.query.get(course_id)
     t = Teacher.query.get(c.teacher_id)
     course = {'name': c.name, 'content': c.content, 'time': c.time, 'teacher_firstname': t.firstname, 'teacher_lastname': t.lastname}
-    return render_template("courses/update.html", form = UpdateForm(data=course), course = Course.query.get(course_id))
+    return render_template("courses/update.html", form = CourseForm(data=course), course = Course.query.get(course_id))
 
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 @login_required
 def courses_update(course_id):
-    form = UpdateForm(request.form)
+    form = CourseForm(request.form)
 
     if not form.validate():
         return render_template("courses/update.html", form = form, course = Course.query.get(course_id))
