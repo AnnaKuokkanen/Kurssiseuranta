@@ -20,6 +20,8 @@ from CourseEditor import views
 from CourseEditor.courses import models
 from CourseEditor.courses import views
 
+from CourseEditor.grades import views
+
 from CourseEditor.plans import views
 
 from CourseEditor.teachers import models

@@ -31,11 +31,6 @@ def courses_delete(course_id):
 
     return redirect(url_for("courses_list"))
 
-@app.route("/courses/grades.html") 
-@login_required
-def grades_show():
-    return render_template("courses/grades.html")
-
 @app.route("/courses/new.html")
 @login_required
 def courses_form():
