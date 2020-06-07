@@ -69,8 +69,8 @@ def courses_update(course_id):
     if not form.validate():
         return render_template("courses/update.html", form = form, course = Course.query.get(id))
 
-    t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
+    t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
 
     User.remove_row(current_user.id, id)
     
