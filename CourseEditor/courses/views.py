@@ -57,22 +57,20 @@ def courses_create():
 @app.route("/courses/update.html/<course_id>", methods=["GET"])
 @login_required
 def courses_update_form(course_id):
-    id = course_id
-    return render_template("courses/update.html", form = UpdateForm(), course = Course.query.get(id))
+    return render_template("courses/update.html", form = UpdateForm(), course = Course.query.get(course_id))
 
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 @login_required
 def courses_update(course_id):
-    id = course_id
     form = UpdateForm(request.form)
 
     if not form.validate():
-        return render_template("courses/update.html", form = form, course = Course.query.get(id))
+        return render_template("courses/update.html", form = form, course = Course.query.get(course_id))
 
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
     t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
 
-    User.remove_row(current_user.id, id)
+    User.remove_row(current_user.id, course_id)
     
     return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data)
 
@@ -110,7 +108,7 @@ def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, cou
 
         db.session().add(c)
 
-    elif course_id:
+    else:
         c = Course.query.get(course_id[0])
         
     c.accounts.append(current_user)
