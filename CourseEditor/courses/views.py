@@ -67,8 +67,6 @@ def courses_update(course_id):
 
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
     t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
-
-    User.remove_row(current_user.id, course_id)
     
     return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data)
 
@@ -90,11 +88,8 @@ def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, cou
         db.session().add(c)
         db.session().commit()
     
-        # c.accounts.append(current_user)
-        # current_user.courses.append(c)
         uc = UserCourse(current_user.id, c.id, False, False)
         db.session.add(uc)
-
         db.session().commit()
 
         return redirect(url_for("courses_list"))
@@ -113,13 +108,11 @@ def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, cou
     else:
         c = Course.query.get(course_id[0])
 
-    # c.accounts.append(current_user)
-    # current_user.courses.append(c)
-    uc = UserCourse.query.filter_by(user_id=current_user.id, course_id=c.id, completed=False, planned=False)
+    uc = UserCourse.query.filter_by(user_id=current_user.id, course_id=c.id).first()
     if uc is None:
         uc = UserCourse(current_user.id, c.id, False, False)
-        db.session.add(uc)
-    
+        db.session().add(uc)
+  
     db.session().commit()
 
     return redirect(url_for("courses_list"))

@@ -15,14 +15,6 @@ class UserCourse(db.Model):
         self.completed = completed
         self.planned = planned
 
-    # @staticmethod
-    # def add_row(user_id, course_id):
-        # stmt = text("INSERT INTO account_course VALUES "
-        #             "(user_id = :user, " 
-        #             "course_id = :course, "
-        #             "completed = :completed, "
-        #             "planned = :planned)").params(user=user_id, course=course_id, completed=False, planned=False)
-        # db.engine.execute(stmt)
 
 # UserCourse = db.Table('account_course',
 #                         db.Column('user_id', db.Integer, db.ForeignKey('account.id', ondelete='cascade'), primary_key=True), 
