@@ -57,7 +57,10 @@ def courses_create():
 @app.route("/courses/update.html/<course_id>", methods=["GET"])
 @login_required
 def courses_update_form(course_id):
-    return render_template("courses/update.html", form = UpdateForm(), course = Course.query.get(course_id))
+    c = Course.query.get(course_id)
+    t = Teacher.query.get(c.teacher_id)
+    course = {'name': c.name, 'content': c.content, 'time': c.time, 'teacher_firstname': t.firstname, 'teacher_lastname': t.lastname}
+    return render_template("courses/update.html", form = UpdateForm(data=course), course = Course.query.get(course_id))
 
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
 @login_required
