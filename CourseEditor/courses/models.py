@@ -59,26 +59,26 @@ class Course(db.Model):
         
         return response
 
-    @staticmethod
-    def find_planned_courses(user_id):
-        stmt = text("SELECT Course.id, Course.name, Course.content, Course.time, Teacher.firstname, Teacher.lastname FROM Course, Teacher "
-                    "LEFT JOIN account_course ON user_id = :user AND account_course.planned = :planned").params(user=user_id, planned=True)
+    #@staticmethod
+    #def find_planned_courses(user_id):
+    #    stmt = text("SELECT Course.id, Course.name, Course.content, Course.time, Teacher.firstname, Teacher.lastname FROM Course, Teacher "
+    #                "LEFT JOIN account_course ON user_id = :user WHERE account_course.planned = :planned").params(user=user_id, planned=True)
         
-        res = db.engine.execute(stmt)
-        response = []
-        for row in res:
-            response.append({"id":row[0], "name":row[1], "content":row[2], "time":row[3], "firstname":row[4],"lastname":row[5]})
+    #    res = db.engine.execute(stmt)
+    #    response = []
+    #    for row in res:
+    #        response.append({"id":row[0], "name":row[1], "content":row[2], "time":row[3], "firstname":row[4],"lastname":row[5]})
 
-        return response
+    #    return response
 
-    @staticmethod
-    def find_completed_courses(user_id):
-        stmt = text("SELECT Course.id, Course.name, Course.content, Course.time, Teacher.firstname, Teacher.lastname FROM Course, Teacher "
-                    "LEFT JOIN account_course ON user_id = :user AND account_course.completed = :completed").params(user=user_id, completed=True)
+    #@staticmethod
+    #def find_completed_courses(user_id):
+    #    stmt = text("SELECT Course.id, Course.name, Course.content, Course.time, Teacher.firstname, Teacher.lastname FROM Course, Teacher "
+    #                "LEFT JOIN account_course ON account_course.user_id = :user WHERE account_course.completed").params(user=user_id)
         
-        res = db.engine.execute(stmt)
-        response = []
-        for row in res:
-            response.append({"id":row[0], "name":row[1], "content":row[2], "time":row[3], "firstname":row[4],"lastname":row[5]})
+    #    res = db.engine.execute(stmt)
+    #    response = []
+    #    for row in res:
+    #        response.append({"id":row[0], "name":row[1], "content":row[2], "time":row[3], "firstname":row[4],"lastname":row[5]})
 
-        return response
+    #    return response

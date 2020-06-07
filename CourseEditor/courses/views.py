@@ -88,9 +88,12 @@ def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, cou
         c.teacher_id = t.id
 
         db.session().add(c)
+        db.session().commit()
     
-        c.accounts.append(current_user)
-        current_user.courses.append(c)
+        # c.accounts.append(current_user)
+        # current_user.courses.append(c)
+        uc = UserCourse(current_user.id, c.id, False, False)
+        db.session.add(uc)
 
         db.session().commit()
 
@@ -105,15 +108,18 @@ def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, cou
         c.teacher_id = t.id
 
         db.session().add(c)
+        db.session().commit()
 
     else:
         c = Course.query.get(course_id[0])
-        
-    #user_course = account_course.query.filter_by(user_id=current_user.id)
 
-    c.accounts.append(current_user)
-    current_user.courses.append(c)
-
+    # c.accounts.append(current_user)
+    # current_user.courses.append(c)
+    uc = UserCourse.query.filter_by(user_id=current_user.id, course_id=c.id, completed=False, planned=False)
+    if uc is None:
+        uc = UserCourse(current_user.id, c.id, False, False)
+        db.session.add(uc)
+    
     db.session().commit()
 
     return redirect(url_for("courses_list"))

@@ -1,5 +1,6 @@
 from CourseEditor import db
 from CourseEditor.models import Base
+from CourseEditor.usercourse.models import UserCourse
 from sqlalchemy.sql import text
 
 class User(Base):
@@ -34,3 +35,4 @@ class User(Base):
         stmt = text("DELETE FROM account_course WHERE user_id = :user AND course_id = :course").params(user=user_id, course=course_id)
         db.engine.execute(stmt)
         
+    
