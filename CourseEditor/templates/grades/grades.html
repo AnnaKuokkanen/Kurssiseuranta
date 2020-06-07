@@ -3,7 +3,25 @@
 {% block body %} 
   <h1>
     Suorituksesi:
-  </h1>    
+  </h1>  
+  <table method="GET" action="{{ url_for('grades_show') }}">
+    <tr>
+      <th>Nimi</th>
+      <th>Sisältö</th>
+      <th>Ajankohta</th>
+      <th>Opettaja</th>
+    </tr>
+    {% if grades is defined %}
+    {% for course in grades %}
+    <tr>
+      <td>{{ course.name }}</td>
+      <td>{{ course.content }}</td>
+      <td>{{ course.time }}</td>
+      <td>{{ course.firstname }} {{ course.lastname }}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+  </table><br>  
   <a href="/users/menu.html">
     <button>Takaisin valikkoon</button>
   </a>

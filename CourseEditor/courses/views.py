@@ -109,6 +109,8 @@ def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, cou
     else:
         c = Course.query.get(course_id[0])
         
+    #user_course = account_course.query.filter_by(user_id=current_user.id)
+
     c.accounts.append(current_user)
     current_user.courses.append(c)
 
