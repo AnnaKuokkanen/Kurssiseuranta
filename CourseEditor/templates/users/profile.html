@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <h1 class="pb-3 mb-4 font-italic border-bottom">
+  <h1>
     Profiilisi
   </h1>
   <table method="GET" action="{{ url_for('show_profile') }}">
     <tr>
       <th>
-        <h3 class="h3 mb-3 font-weight-normal">Nimi: {{user.firstname}}</h3>
+        <h3>Nimi: {{user.firstname}}</h3>
       </th>
     </tr>
     <tr>
       <th>
-        <h3 class="h3 mb-3 font-weight-normal">Sukunimi: {{user.lastname}}</h3>        
+        <h3>Sukunimi: {{user.lastname}}</h3>        
       </th>
     </tr>
   </table>
