@@ -2,7 +2,7 @@ from CourseEditor import app, db
 from CourseEditor.users.forms import LoginForm, RegistrationForm
 from CourseEditor.users.models import User
 from flask import render_template, request, url_for, redirect
-from flask_login import login_required, login_user, logout_user
+from flask_login import current_user, login_required, login_user, logout_user
 
 @app.route("/users/login.html")
 def users_login():
@@ -60,8 +60,8 @@ def users_create():
     
         return render_template("/index.html")
 
-@app.route("/users/profile.html")
+@app.route("/users/profile.html", methods=["GET"])
 @login_required
 def show_profile():
-    return render_template("users/profile.html")
+    return render_template("users/profile.html", user = User.query.get(current_user.id))
 

@@ -1,7 +1,19 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <h1>
+  <h1 class="pb-3 mb-4 font-italic border-bottom">
     Profiilisi
   </h1>
+  <table method="GET" action="{{url_for('show_profile')}}">
+    <tr>
+      <th>Nimi: {{user.firstname}}</th>
+    </tr>
+    <tr>
+      <th>Sukunimi: {{user.lastname}}</th>
+    </tr>
+  </table>
+  <br>
+  <a href="/users/menu.html">
+    <button>Takaisin valikkoon</button>
+  </a>
 {% endblock %}
