@@ -1,5 +1,5 @@
 from CourseEditor import app, db
-from CourseEditor.users.forms import LoginForm, RegistrationForm
+from CourseEditor.users.forms import LoginForm, RegistrationForm, UpdateForm
 from CourseEditor.users.models import User
 from flask import render_template, request, url_for, redirect
 from flask_login import current_user, login_required, login_user, logout_user
@@ -75,7 +75,25 @@ def delete_profile(user_id):
 
     return redirect(url_for("index"))
 
-#@app.route("/users/profile.html/<user_id>", methods=["POST"])
-#@login_required
-#def update_profile(user_id):
-    #return render_template("users/profile.html", user = User.query.get(current_user.id))
+@app.route("/users/update.html/<user_id>", methods=["GET"])
+@login_required
+def update_profile_form(user_id):
+    u = User.query.get(user_id)
+    user = {'firstname': u.firstname, 'lastname': u.lastname}
+    return render_template("users/update.html", form=UpdateForm(data=user), user = User.query.get(user_id))
+
+@app.route("/users/update.html/<user_id>", methods=["POST"])
+@login_required
+def update_profile(user_id):
+    form = UpdateForm(request.form)
+
+    if not form.validate():
+        return render_template("users/update.html", form=form, user = User.query.get(user_id))
+
+    u = User.query.get(user_id)
+    u.firstname = form.firstname.data
+    u.lastname = form.lastname.data
+    db.session().add(u)
+    db.session().commit()
+
+    return render_template("users/profile.html", user = User.query.get(user_id))
