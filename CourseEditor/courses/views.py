@@ -71,6 +71,9 @@ def courses_update(course_id):
     t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
     completed = form.completed.data
     planned = form.planned.data
+
+    User.remove_row(current_user.id, course_id)
+    db.session().commit()
     
     return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data, completed, planned)
 
