@@ -16,12 +16,10 @@
       </th>
     </tr>
   </table>
-  <form method="DELETE" action="{{ url_for('delete_profile') }}">
+  <form method="POST" action="{{ url_for('delete_profile', user_id=user.id) }}">
     <input type="submit" value="Poista käyttäjä"/>
   </form> 
-  <form method="POST" action="{{ url_for('update_profile') }}">
-    <input type="submit" value="Päivitä käyttäjä"/>
-  </form> 
+  
   <br>
   <a href="/users/menu.html">
     <button>Takaisin valikkoon</button>
