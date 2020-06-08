@@ -10,22 +10,18 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       {% if current_user.is_authenticated %}
       <a class="navbar-brand" href="#">Kurssiseuranta</a>
-      {% else %}
-      <a class="navbar-brand" href="/">Kurssiseuranta</a>
-      {% endif %}
       <div class="form-inline mt-2 mt-md-0">
-        {% if current_user.is_authenticated %}
-        <p>
-          <a class="navbar-brand" href="#">Kirjautunut nimellä {{ current_user.firstname }} {{ current_user.lastname }}</a>
-        </p>
+        <a class="navbar-brand" href="#">Kirjautunut nimellä {{ current_user.firstname }} {{ current_user.lastname }}</a>
         <a href="{{ url_for('users_logout') }}">
           <button>Kirjaudu ulos</button>
         </a>
         <a href="{{ url_for('show_profile') }}">
           <button>Tarkastele profiiliasi</button>
         </a>
-        {% endif %}
       </div>
+      {% else %}
+      <a class="navbar-brand" href="/">Kurssiseuranta</a>
+      {% endif %}
     </nav>
 
     <main role="main" class="container">
