@@ -34,5 +34,10 @@ class User(Base):
     def remove_row(user_id, course_id):
         stmt = text("DELETE FROM account_course WHERE user_id = :user AND course_id = :course").params(user=user_id, course=course_id)
         db.engine.execute(stmt)
+    
+    @staticmethod
+    def remove_user(user_id):
+        stmt = text("DELETE FROM account_course WHERE user_id = :user").params(user=user_id)
+        db.engine.execute(stmt)
         
     

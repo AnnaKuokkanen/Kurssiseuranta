@@ -65,3 +65,18 @@ def users_create():
 def show_profile():
     return render_template("users/profile.html", user = User.query.get(current_user.id))
 
+@app.route("/users/profile.html", methods=["DELETE"])
+@login_required
+def delete_profile():
+    u = User.query.get(current_user.id)
+    db.session().delete(u)
+    db.session().commit()
+    User.remove_user(current_user.id)
+    db.session().commit()
+
+    return redirect(url_for("index"))
+
+@app.route("/users/profile.html", methods=["POST"])
+@login_required
+def update_profile():
+    return render_template("users/profile.html", user = User.query.get(current_user.id))

@@ -4,7 +4,7 @@
   <h1 class="pb-3 mb-4 font-italic border-bottom">
     Profiilisi
   </h1>
-  <table method="GET" action="{{url_for('show_profile')}}">
+  <table method="GET" action="{{ url_for('show_profile') }}">
     <tr>
       <th>
         <h3 class="h3 mb-3 font-weight-normal">Nimi: {{user.firstname}}</h3>
@@ -16,6 +16,12 @@
       </th>
     </tr>
   </table>
+  <form method="DELETE" action="{{ url_for('delete_profile') }}">
+    <input type="submit" value="Poista käyttäjä"/>
+  </form> 
+  <form method="POST" action="{{ url_for('update_profile') }}">
+    <input type="submit" value="Päivitä käyttäjä"/>
+  </form> 
   <br>
   <a href="/users/menu.html">
     <button>Takaisin valikkoon</button>
