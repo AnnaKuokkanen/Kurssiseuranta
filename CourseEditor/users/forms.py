@@ -18,3 +18,11 @@ class RegistrationForm(FlaskForm):
     
     class Meta:
         csrf = False
+
+class UpdateForm(FlaskForm):
+
+    firstname = StringField("Nimi", [validators.Length(min=2, max=144)])
+    lastname = StringField("Sukunimi", [validators.Length(min=2, max=144)])
+
+    class Meta:
+        csrf = False

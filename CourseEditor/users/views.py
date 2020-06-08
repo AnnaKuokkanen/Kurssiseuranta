@@ -60,3 +60,7 @@ def users_create():
     
         return render_template("/index.html")
 
+@app.route("/users/profile.html")
+def show_profile():
+    return render_template("users/profile.html")
+
