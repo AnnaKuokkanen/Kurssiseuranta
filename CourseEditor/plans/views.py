@@ -7,5 +7,4 @@ from flask_login import current_user, login_required
 @app.route("/plans/plan.html") 
 @login_required
 def plans_show():
-    #return render_template("plans/plan.html", plans = Course.find_planned_courses(current_user.id))
-    return render_template("plans/plan.html", plans = Course.query.all())
+    return render_template("plans/plan.html", plans = Course.find_planned_courses(current_user.id))
