@@ -65,7 +65,7 @@ class Course(db.Model):
                     "LEFT JOIN account_course ON user_id = :user "
                     "WHERE Course.teacher_id = Teacher.id "
                     "AND account_course.course_id = Course.id "
-                    "AND account_course.planned = :planned").params(user=user_id, planned=False)
+                    "AND account_course.planned = :planned").params(user=user_id, planned=True)
         
         res = db.engine.execute(stmt)
 

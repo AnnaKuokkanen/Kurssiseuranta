@@ -46,8 +46,10 @@ def courses_create():
     
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
     t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
+    completed = form.completed.data
+    planned = form.planned.data
 
-    return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data)
+    return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data, completed, planned)
 
 @app.route("/courses/update.html/<course_id>", methods=["GET"])
 @login_required
@@ -67,10 +69,12 @@ def courses_update(course_id):
 
     c = Course.query.filter_by(name=form.name.data, content=form.content.data, time=form.time.data).first()
     t = Teacher.query.filter_by(firstname=form.teacher_firstname.data, lastname=form.teacher_lastname.data).first()
+    completed = form.completed.data
+    planned = form.planned.data
     
-    return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data)
+    return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data, completed, planned)
 
-def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, course_content, course_time):
+def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, course_content, course_time, completed, planned):
 
     if t is None:
         t = Teacher(teacher_firstname,
@@ -88,7 +92,7 @@ def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, cou
         db.session().add(c)
         db.session().commit()
     
-        uc = UserCourse(current_user.id, c.id, False, False)
+        uc = UserCourse(current_user.id, c.id, completed, planned)
         db.session.add(uc)
         db.session().commit()
 
@@ -110,7 +114,7 @@ def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, cou
 
     uc = UserCourse.query.filter_by(user_id=current_user.id, course_id=c.id).first()
     if uc is None:
-        uc = UserCourse(current_user.id, c.id, False, False)
+        uc = UserCourse(current_user.id, c.id, completed, planned)
         db.session().add(uc)
   
     db.session().commit()
