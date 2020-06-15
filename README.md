@@ -16,6 +16,8 @@ Kurssisunnittelutyökalussa on mahdollisuus rekisteröitymiseen.
 
 [Käyttötapaukset](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.md)
 
+[Käyttöohje](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
+
 ## Toimintoja: 
 
 * rekisteröityminen
