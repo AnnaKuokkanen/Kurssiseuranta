@@ -50,7 +50,7 @@ class User(Base):
     @staticmethod
     def list_all_users():
         stmt = text("SELECT firstname, lastname FROM User "
-                    "WHERE User.role_id = 1")
+                    "WHERE User.role_id = :role").params(role = 1)
         res = db.engine.execute(stmt)
 
         response = []
