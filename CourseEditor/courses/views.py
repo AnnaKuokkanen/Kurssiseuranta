@@ -31,6 +31,12 @@ def courses_delete(course_id):
 
     return redirect(url_for("courses_list"))
 
+@app.route("/course/info.html/<course_id>", methods=["GET"])
+@login_required()
+def course_info(course_id):
+
+    return render_template("courses/info.html", students = Course.list_students(course_id))
+
 @app.route("/courses/new.html")
 @login_required
 def courses_form():

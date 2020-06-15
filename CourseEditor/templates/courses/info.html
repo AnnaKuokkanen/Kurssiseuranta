@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+  <h1>
+    Kurssin osallistujat:
+  </h1>  
+  {% if students is defined %}
+  {% for student in students %}
+  <table method="GET" action="{{ url_for('course_info', course_id=student.id) }}">
+    <tr>
+      <th>{{ student.firstname }}</th>
+      <th>{{ student.lastname }}</th>
+    </tr>
+    {% endfor %}
+    {% endif %}
+  </table><br>
+  <a href="/users/menu.html">
+    <button>Takaisin valikkoon</button>
+  </a> 
+{% endblock %}

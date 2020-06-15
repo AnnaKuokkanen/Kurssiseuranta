@@ -54,6 +54,11 @@
           <input type="submit" value="Poista"/>
         </form> 
       </td>
+      <td>
+        <form method="GET" action="{{ url_for('course_info', course_id=course.id) }}">
+          <input type="submit" value="Osallistujat"/>
+        </form> 
+      </td>
     </tr>
     {% endfor %}
     {% endif %}

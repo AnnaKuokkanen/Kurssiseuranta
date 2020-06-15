@@ -94,7 +94,7 @@ class Course(db.Model):
 
     @staticmethod
     def list_students(course_id):
-        stmt = text("SELECT Course.id, account.firstname, account.lastname FROM Course, account "
+        stmt = text("SELECT DISTINCT Course.id, account.firstname, account.lastname FROM Course, account "
                     "LEFT JOIN account_course ON course_id = :course "
                     "WHERE account.id = account_course.user_id").params(course = course_id)
 
