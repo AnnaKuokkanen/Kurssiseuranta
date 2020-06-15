@@ -30,3 +30,9 @@ Kurssisunnittelutyökalussa on mahdollisuus rekisteröitymiseen.
 * sunnitelmien ja suoritusten tarkastelu
 * omien tietojen (etu-/sukunimen) päivitys
 * oman profiilin poistaminen
+
+
+## Huomioitavaa:
+
+Toistaiseksi sovellukseen ei ole toteutettu ominaisuutta, jolla admin voisi antaa admin-oikeutensa tavallisille käyttäjille.
+Sovellukseen rekisteröidytään tavalisena käyttäjänä. Tavallisen käyttäjän rajoituksiin kuuluu kurssien poisto.
