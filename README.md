@@ -12,7 +12,7 @@ tulevaisuudessa tai jotka hän on jo suorittanut. Opiskelija voi poistaa kurssej
 
 Kurssisunnittelutyökalussa on mahdollisuus rekisteröitymiseen.
 
-[Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/Tietokantakaavio.png)
+[Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/tietokantakaavio.md)
 
 [Käyttötapaukset](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.md)
 
