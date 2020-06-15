@@ -53,7 +53,7 @@ def users_create():
         u = User(form.firstname.data,
                 form.lastname.data,
                 form.username.data,
-                form.password.data)
+                form.password.data, 1)
 
         db.session().add(u)
         db.session().commit()

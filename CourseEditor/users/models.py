@@ -13,12 +13,12 @@ class User(Base):
 
     courses = db.relationship('Course', secondary='account_course', cascade='all, delete-orphan', backref='account', single_parent=True, lazy=True)
 
-    def __init__(self, firstname, lastname, username, password):
+    def __init__(self, firstname, lastname, username, password, role_id):
         self.firstname = firstname
         self.lastname = lastname
         self.username = username
         self.password = password
-        self.role_id = 1
+        self.role_id = role_id
 
     def get_id(self):
         return self.id
@@ -35,7 +35,7 @@ class User(Base):
     def roles(self):
         roles = []
         roles.append(Role.search_role(self.role_id))
-        return roles
+        return roles[0]
 
     @staticmethod
     def remove_row(user_id, course_id):
@@ -65,9 +65,11 @@ class Role(db.Model):
     def search_role(role_id):
         stmt = text("SELECT Role.role FROM Role WHERE Role.id = :role").params(role=role_id)  
         
-        db.engine.execute(stmt)
+        res = db.engine.execute(stmt)
 
-        response = "role"
-        
+        response = []
+        for row in res:
+            response.append(row[0])
+
         return response
     
