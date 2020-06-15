@@ -1,5 +1,9 @@
 ### Käyttäjänä haluan rekisteröityä.
 
+```
+INSERT INTO User (firstname, lastname, username, password) VALUES (etunimi, sukunimi, käyttäjänimi, salasana)
+```
+
 ### Käyttäjänä haluan kirjautua sisään, jotta voin tarkastella henkilökohtaisia muistiinpanojani.
 
 ### Käyttäjänä haluan lisätä käynnissäolevia kurssejani listaan, jotta voin pitää kirjaa opiskelustani.
