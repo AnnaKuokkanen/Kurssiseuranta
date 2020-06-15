@@ -4,17 +4,17 @@
   <h1>
     Kurssin osallistujat:
   </h1>  
+  <table>
   {% if students is defined %}
   {% for student in students %}
-  <table method="GET" action="{{ url_for('course_info', course_id=student.id) }}">
     <tr>
       <th>{{ student.firstname }}</th>
       <th>{{ student.lastname }}</th>
     </tr>
-    {% endfor %}
-    {% endif %}
+  {% endfor %}
+  {% endif %}
   </table><br>
-  <a href="/users/menu.html">
-    <button>Takaisin valikkoon</button>
+  <a href="/courses/courses.html">
+    <button>Takaisin</button>
   </a> 
 {% endblock %}

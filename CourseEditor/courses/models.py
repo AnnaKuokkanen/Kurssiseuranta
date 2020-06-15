@@ -94,7 +94,7 @@ class Course(db.Model):
 
     @staticmethod
     def list_students(course_id):
-        stmt = text("SELECT DISTINCT Course.id, account.firstname, account.lastname FROM Course, account "
+        stmt = text("SELECT DISTINCT account.firstname, account.lastname FROM account "
                     "LEFT JOIN account_course ON course_id = :course "
                     "WHERE account.id = account_course.user_id").params(course = course_id)
 
@@ -102,6 +102,6 @@ class Course(db.Model):
 
         response = []
         for row in res:
-            response.append({"id":row[0], "firstname":row[1], "lastname":row[2]})
+            response.append({"firstname":row[0], "lastname":row[1]})
 
         return response
