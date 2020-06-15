@@ -2,14 +2,13 @@
 
 [Kurssiseurantatyökaluun](https://courseeditor.herokuapp.com/)
 
+Tämä on Helsingin yliopiston [tietokantojen harjoitustyö](https://materiaalit.github.io/tsoha-20/osa0/)-kurssin projekti
+
 Kurssiseurantatyökalun avulla opiskelija voi sisäänkirjautuneena tarkastella omia
-käynnissäolevia kursseja, tulevia kursseja ja suorituksia. Opiskelija voi
-selailla tarjolla olevia kursseja ja suodattaa niitä sisällön/ajankohdan perusteella.
+käynnissäolevia kursseja, tulevia kursseja ja suorituksia. Opiskelija voi lisätä kursseja,
+selailla lisäämiään kursseja ja suodattaa niitä nimen perusteella.
 Opiskelija voi tallentaa itselleen muistiin kursseja, joita hän haluaisi käydä 
-tulevaisuudessa. Opiskelija voi myös tarkastella ja ryhmitellä suorituksiaan 
-arvosanan/sisällön perusteella. Opiskelija voi poistaa kursseja toivelistaltaan,
-mutta ei suorituksia. Opiskelija voi perua ilmoittautumisensa käynnissä olevalle kurssille,
-jolloin hän ei saa kurssista suoritusmerkintää.
+tulevaisuudessa tai jotka hän on jo suorittanut. Opiskelija voi poistaa kursseja toive- ja suorituslistoiltaan.
 
 Kurssisunnittelutyökalussa on mahdollisuus rekisteröitymiseen.
 
@@ -23,7 +22,11 @@ Kurssisunnittelutyökalussa on mahdollisuus rekisteröitymiseen.
 * sisäänkirjautuminen
 * kurssien tarkastelu
 * kurssien lisääminen
+* kurssien poistaminen
 * kurssien statuksen päivittäminen (sunnitelma/suoritus)
-* kurssilistan päivittäminen (poisto/lisäys)
-* kurssilistan järjestäminen toivotun ominaisuuden perusteella
-* kurssien tarkastelu ja filtteröinti
+* kurssin tietojen päivittäminen (nimi/sisältö/ajankohta)
+* kurssien hakeminen nimen perusteella
+* kurssin suoritetuksi tai suunnitelluksi lisääminen
+* sunnitelmien ja suoritusten tarkastelu
+* omien tietojen (etu-/sukunimen) päivitys
+* oman profiilin poistaminen
