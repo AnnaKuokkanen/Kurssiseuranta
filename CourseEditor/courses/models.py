@@ -23,7 +23,7 @@ class Course(db.Model):
         stmt = text("SELECT Course.id, Course.name, Course.content, Course.time, Teacher.firstname, Teacher.lastname FROM Course, Teacher "
                     "LEFT JOIN account_course ON user_id = :user "
                     "WHERE Course.teacher_id = Teacher.id AND course_id = Course.id "
-                    "GROUP BY Course.name").params(user=user_id)
+                    "ORDER BY Course.name").params(user=user_id)
         
         res = db.engine.execute(stmt)
 
@@ -94,14 +94,14 @@ class Course(db.Model):
 
     @staticmethod
     def list_students(course_id):
-        stmt = text("SELECT User.firstname, User.lastname FROM User "
+        stmt = text("SELECT Course.id, account.firstname, account.lastname FROM Course, account "
                     "LEFT JOIN account_course ON course_id = :course "
-                    "WHERE User.id = account_course.user_id").params(course = course_id)
+                    "WHERE account.id = account_course.user_id").params(course = course_id)
 
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"firstname":row[0],"lastname":row[1]})
+            response.append({"id":row[0], "firstname":row[1], "lastname":row[2]})
 
         return response
