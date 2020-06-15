@@ -10,8 +10,6 @@ selailla lisäämiään kursseja ja suodattaa niitä nimen perusteella.
 Opiskelija voi tallentaa itselleen muistiin kursseja, joita hän haluaisi käydä 
 tulevaisuudessa tai jotka hän on jo suorittanut. Opiskelija voi poistaa kursseja toive- ja suorituslistoiltaan.
 
-Kurssisunnittelutyökalussa on mahdollisuus rekisteröitymiseen.
-
 [Tietokantakaavio](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/tietokantakaavio.md)
 
 [Käyttötapaukset](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.md)
@@ -34,6 +32,14 @@ Kurssisunnittelutyökalussa on mahdollisuus rekisteröitymiseen.
 * sunnitelmien ja suoritusten tarkastelu
 * omien tietojen (etu-/sukunimen) päivitys
 * oman profiilin poistaminen
+
+## Kirjautuminen
+
+Sovellukseen rekisteröidytään tavallisena käyttäjänä. Tässä tunnukset, joilla saa käyttöönsä admin-tasoisen käyttäjän:
+```
+käyttäjänimi: ellavirta
+salasana: salasana
+```
 
 
 ## Huomioitavaa:
