@@ -30,6 +30,9 @@ class User(Base):
     def is_authenticated(self):
         return True
 
+    def roles(self):
+        return ["USER"]
+
     @staticmethod
     def remove_row(user_id, course_id):
         stmt = text("DELETE FROM account_course WHERE user_id = :user AND course_id = :course").params(user=user_id, course=course_id)

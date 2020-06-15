@@ -1,11 +1,11 @@
-from CourseEditor import app, db
+from CourseEditor import app, db, login_required
 from CourseEditor.courses.forms import CourseForm, SearchForm
 from CourseEditor.courses.models import Course
 from CourseEditor.teachers.models import Teacher
 from CourseEditor.usercourse.models import UserCourse
 from CourseEditor.users.models import User
 from flask import redirect, render_template, request, url_for
-from flask_login import current_user, login_required
+from flask_login import current_user
 
 @app.route("/courses/courses.html", methods=["GET"])
 @login_required
@@ -37,7 +37,7 @@ def courses_form():
     return render_template("courses/new.html", form = CourseForm())
 
 @app.route("/courses/new.html", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def courses_create():
     form = CourseForm(request.form)
 
