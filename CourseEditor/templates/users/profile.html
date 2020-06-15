@@ -23,7 +23,10 @@
     <input type="submit" value="Päivitä käyttäjä"/>
   </form> 
   <br>
-  <h1>Rooli: {{user.role_id}}</h1>
+  {% if user.role_id == 2 %}
+    <h3>Sinulla on Admin-oikeudet</h3>
+    <p>Saat myöntää oikeudet muille käyttäjille</p>
+  {% endif %}
   <a href="/users/menu.html">
     <button>Takaisin valikkoon</button>
   </a>

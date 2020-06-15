@@ -47,6 +47,10 @@ class User(Base):
         stmt = text("DELETE FROM account_course WHERE user_id = :user").params(user=user_id)
         db.engine.execute(stmt)
     
+    @staticmethod
+    def list_all_users():
+        stmt = text("SELECT firstname, lastname FROM User")
+        db.engine.execute(stmt)
 
 class Role(db.Model):
 
