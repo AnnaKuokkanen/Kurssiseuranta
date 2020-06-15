@@ -91,3 +91,17 @@ class Course(db.Model):
             response.append({"id":row[0], "name":row[1], "content":row[2], "time":row[3], "firstname":row[4],"lastname":row[5]})
 
         return response
+
+    @staticmethod
+    def list_students(course_id):
+        stmt = text("SELECT User.firstname, User.lastname FROM User "
+                    "LEFT JOIN account_course ON course_id = :course "
+                    "WHERE User.id = account_course.user_id").params(course = course_id)
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"firstname":row[0],"lastname":row[1]})
+
+        return response
