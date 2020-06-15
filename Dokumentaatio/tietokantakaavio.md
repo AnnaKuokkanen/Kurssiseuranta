@@ -1,3 +1,3 @@
-![kaavio](/Tietokantakaavio.png)
+![kaavio](Tietokantakaavio.png)
 
 ## Create Table- lauseet
