@@ -49,8 +49,7 @@ def login_required(_func=None, *, role="ANY"):
 # Oma sovellus
 from CourseEditor import views
 
-from CourseEditor.courses import models
-from CourseEditor.courses import views
+from CourseEditor.courses import models, views
 
 from CourseEditor.grades import views
 
@@ -58,8 +57,7 @@ from CourseEditor.plans import views
 
 from CourseEditor.teachers import models
 
-from CourseEditor.users import models
-from CourseEditor.users import views
+from CourseEditor.users import models, views
 
 from CourseEditor.usercourse import models
 
@@ -69,5 +67,10 @@ def load_user(user_id):
 
 try:
     db.create_all()
+    r1 = Role("USER")
+    r2 = Role("ADMIN")
+    db.session().add(r1)
+    db.session().add(r2)
+    db.session().commit()
 except:
     pass
