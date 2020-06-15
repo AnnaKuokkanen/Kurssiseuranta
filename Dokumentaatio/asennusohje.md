@@ -1,4 +1,4 @@
-## Sovelluksen vaatimukset
+## Sovelluksen käyttäminen paikallisesti
 
 Koneellasi tulee olla asennettuna Python, mikäli haluat käyttää sovellusta paikallisesti
 
@@ -28,3 +28,8 @@ python3 run.py
 ```
 
 Mene osoitteeseen http://localhost:5000/
+
+## Sovelluksen käyttäminen Herokussa 
+
+Mene osoitteeseen https://courseeditor.herokuapp.com/ ja käytä sovellusta
+
