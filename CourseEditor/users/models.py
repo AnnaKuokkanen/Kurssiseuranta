@@ -55,14 +55,17 @@ class Role(db.Model):
 
     users = db.relationship("User", cascade='all, delete-orphan', backref='role', single_parent=True, lazy=True)
 
+    def __init__(self, id, role):
+        self.id = id
+        self.role = role
+
     @staticmethod
     def search_role(role_id):
         stmt = text("SELECT Role.role FROM Role WHERE Role.id = :role").params(role=role_id)  
-        res = db.engine.execute(stmt)
+        
+        db.engine.execute(stmt)
 
-        response = []
-        for row in res:
-            response.append({"role":row[0]})
+        response = "role"
         
         return response
     

@@ -58,6 +58,7 @@ from CourseEditor.plans import views
 from CourseEditor.teachers import models
 
 from CourseEditor.users import models, views
+from CourseEditor.users.models import Role
 
 from CourseEditor.usercourse import models
 
@@ -67,10 +68,12 @@ def load_user(user_id):
 
 try:
     db.create_all()
-    r1 = Role("USER")
-    r2 = Role("ADMIN")
+    r1 = Role(id =1, role = "USER")
     db.session().add(r1)
-    db.session().add(r2)
+
+    r2 = Role(id = 2, role = "ADMIN")
+    db.session.add(r2)
+
     db.session().commit()
 except:
     pass
