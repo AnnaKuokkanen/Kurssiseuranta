@@ -33,7 +33,9 @@ class User(Base):
         return True
 
     def roles(self):
-        return Role.search_role(self.role_id)
+        roles = []
+        roles.append(Role.search_role(self.role_id))
+        return roles
 
     @staticmethod
     def remove_row(user_id, course_id):
