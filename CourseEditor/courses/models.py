@@ -22,7 +22,8 @@ class Course(db.Model):
     def list_course_and_teacher(user_id):
         stmt = text("SELECT Course.id, Course.name, Course.content, Course.time, Teacher.firstname, Teacher.lastname FROM Course, Teacher "
                     "LEFT JOIN account_course ON user_id = :user "
-                    "WHERE Course.teacher_id = Teacher.id AND course_id = Course.id").params(user=user_id)
+                    "WHERE Course.teacher_id = Teacher.id AND course_id = Course.id "
+                    "GROUP BY Course.name").params(user=user_id)
         
         res = db.engine.execute(stmt)
 

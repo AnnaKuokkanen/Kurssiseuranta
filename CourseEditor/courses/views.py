@@ -23,7 +23,7 @@ def courses_search():
     return render_template("courses/list.html", courses = Course.find_course_and_teacher(current_user.id, form.name.data))
 
 @app.route("/course/courses.html/<course_id>", methods=["POST"])
-@login_required(role="USER")
+@login_required()
 def courses_delete(course_id):
 
     User.remove_row(current_user.id, course_id)
@@ -60,7 +60,7 @@ def courses_update_form(course_id):
     return render_template("courses/update.html", form = CourseForm(data=course), course = Course.query.get(course_id))
 
 @app.route("/courses/update.html/<course_id>", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required()
 def courses_update(course_id):
     form = CourseForm(request.form)
 
