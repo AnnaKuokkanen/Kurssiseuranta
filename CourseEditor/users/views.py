@@ -63,7 +63,15 @@ def users_create():
 @app.route("/users/profile.html", methods=["GET"])
 @login_required
 def show_profile():
-    return render_template("users/profile.html", user = User.query.get(current_user.id))
+    users = []
+    current = User.query.get(current_user.id)
+    if current.role_id == 2:
+        users = User.list_all_users()
+        users.insert(0, {"firstname":current.firstname, "lastname":current.lastname})
+    else: 
+        users.insert(0, {"firstname":current.firstname, "lastname":current.lastname})
+    
+    return render_template("users/profile.html", users = users)
 
 @app.route("/users/profile.html/<user_id>", methods=["POST"])
 @login_required
