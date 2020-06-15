@@ -2,7 +2,7 @@
 
 [Kurssiseurantatyökaluun](https://courseeditor.herokuapp.com/)
 
-Tämä on Helsingin yliopiston [tietokantojen harjoitustyö](https://materiaalit.github.io/tsoha-20/osa0/)-kurssin projekti
+Tämä on Helsingin yliopiston [tietokantasovellus](https://materiaalit.github.io/tsoha-20/osa0/)-kurssin projekti
 
 Kurssiseurantatyökalun avulla opiskelija voi sisäänkirjautuneena tarkastella omia
 käynnissäolevia kursseja, tulevia kursseja ja suorituksia. Opiskelija voi lisätä kursseja,
