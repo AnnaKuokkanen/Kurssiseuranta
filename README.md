@@ -18,6 +18,8 @@ Kurssisunnittelutyökalussa on mahdollisuus rekisteröitymiseen.
 
 [Käyttöohje](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
 
+[Asennusohje](https://github.com/AnnaKuokkanen/Kurssiseuranta/blob/master/Dokumentaatio/asennusohje.md)
+
 ## Toimintoja: 
 
 * rekisteröityminen
