@@ -82,6 +82,7 @@ def make_admin(user_id):
 @app.route("/users/profile.html/<user_id>", methods=["POST"])
 @login_required
 def delete_profile(user_id):
+    logout_user()
     User.remove_user(user_id)
     u = User.query.get(user_id)
     db.session().delete(u)
