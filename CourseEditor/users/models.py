@@ -49,13 +49,13 @@ class User(Base):
     
     @staticmethod
     def list_all_users():
-        stmt = text("SELECT firstname, lastname FROM User "
-                    "WHERE User.role_id = :role").params(role = 1)
+        stmt = text("SELECT id, firstname, lastname FROM account "
+                    "WHERE account.role_id = :role").params(role = 1)
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"firstname":row[0], "lastname":row[1]})
+            response.append({"id":row[0], "firstname":row[1], "lastname":row[2]})
 
         return response
 

@@ -1,8 +1,8 @@
-from CourseEditor import app, db
+from CourseEditor import app, db, login_required
 from CourseEditor.users.forms import LoginForm, RegistrationForm, UpdateForm
 from CourseEditor.users.models import User
 from flask import render_template, request, url_for, redirect
-from flask_login import current_user, login_required, login_user, logout_user
+from flask_login import current_user, login_user, logout_user
 
 @app.route("/users/login.html")
 def users_login():
@@ -63,15 +63,21 @@ def users_create():
 @app.route("/users/profile.html", methods=["GET"])
 @login_required
 def show_profile():
-    users = []
-    current = User.query.get(current_user.id)
-    if current.role_id == 2:
-        users = User.list_all_users()
-        users.insert(0, {"firstname":current.firstname, "lastname":current.lastname})
-    else: 
-        users.insert(0, {"firstname":current.firstname, "lastname":current.lastname})
-    
-    return render_template("users/profile.html", users = users)
+    return render_template("users/profile.html", user = User.query.get(current_user.id))
+
+@app.route("/users/users.html", methods=["GET"])
+@login_required(role="ADMIN")
+def show_users():
+    return render_template("users/users.html", users = User.list_all_users())
+
+@app.route("/users/users.html/<user_id>", methods=["POST"])
+@login_required(role="ADMIN")
+def make_admin(user_id):
+    user = User.query.get(user_id)
+    user.role_id = 2
+    db.session().add(user)
+    db.session().commit()
+    return redirect(url_for("show_users"))
 
 @app.route("/users/profile.html/<user_id>", methods=["POST"])
 @login_required

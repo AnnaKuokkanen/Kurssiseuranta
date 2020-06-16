@@ -7,28 +7,28 @@
   <table method="GET" action="{{ url_for('show_profile') }}">
     <tr>
       <th>
-        <h3>Nimi: {{users[0].firstname}}</h3>
+        <h3>Nimi: {{user.firstname}}</h3>
       </th>
     </tr>
     <tr>
       <th>
-        <h3>Sukunimi: {{users[0].lastname}}</h3>        
+        <h3>Sukunimi: {{user.lastname}}</h3>        
       </th>
     </tr>
   </table>
-  <form method="POST" action="{{ url_for('delete_profile', user_id=users[0].id) }}">
+  <form method="POST" action="{{ url_for('delete_profile', user_id=user.id) }}">
     <input type="submit" value="Poista käyttäjä"/>
   </form> 
-  <form method="GET" action="{{ url_for('update_profile', user_id=users[0].id) }}">
+  <form method="GET" action="{{ url_for('update_profile', user_id=user.id) }}">
     <input type="submit" value="Päivitä käyttäjä"/>
   </form> 
   <br>
-  {% if users[0].role_id == 2 %}
+  {% if user.role_id == 2 %}
     <h3>Sinulla on Admin-oikeudet</h3>
     <p>Saat myöntää oikeudet muille käyttäjille</p>
-    {% for user in users %}
-      <th>{{ user.firstname }} {{ user.lastname }}</th>
-    {% endfor %}
+    <form method="GET" action="{{ url_for('show_users') }}">
+      <input type="submit" value="Myönnä oikeuksia"/>
+    </form> 
   {% endif %}
   <a href="/users/menu.html">
     <button>Takaisin valikkoon</button>

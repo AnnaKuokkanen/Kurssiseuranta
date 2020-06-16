@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>
+    Käyttäjät ilman Admin-oikeuksia
+  </h1>
+  <table method="GET" action="{{ url_for('show_users') }}">
+    {% if users is defined %}
+    {% for user in users %}
+    <tr>
+      <td>
+        <th>{{ user.firstname }} {{ user.lastname }}</th>
+      </td>
+      <td>
+        <form method="POST" action="{{ url_for('make_admin', user_id=user.id) }}">
+          <input type="submit" value="Myönnä oikeudet"/>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+  </table>
+  <a href="/users/menu.html">
+    <button>Takaisin valikkoon</button>
+  </a>
+{% endblock %}
