@@ -40,9 +40,4 @@ Sovellukseen rekisteröidytään tavallisena käyttäjänä. Tässä tunnukset, 
 käyttäjänimi: ellavirta
 salasana: salasana
 ```
-
-
-## Huomioitavaa:
-
-Toistaiseksi sovellukseen ei ole toteutettu ominaisuutta, jolla admin voisi antaa admin-oikeutensa tavallisille käyttäjille.
-Sovellukseen rekisteröidytään tavalisena käyttäjänä. Tavallisen käyttäjän rajoituksiin kuuluu kurssien poisto.
+Admin-tasoinen käyttäjä saa antaa admin-oikeudet muille käyttäjille. 
