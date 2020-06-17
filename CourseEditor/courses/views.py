@@ -10,7 +10,11 @@ from flask_login import current_user
 @app.route("/courses/courses.html", methods=["GET"])
 @login_required
 def courses_list():
-    return render_template("courses/courses.html", form = SearchForm(), courses = Course.list_course_and_teacher(current_user.id))
+    user = User.query.get(current_user.id)
+    role_id = user.role_id
+    courses = Course.list_course_and_teacher(current_user.id)
+    courses.insert(0, role_id)
+    return render_template("courses/courses.html", form = SearchForm(), courses = courses)
 
 @app.route("/course/courses.html", methods=["POST"])
 @login_required
