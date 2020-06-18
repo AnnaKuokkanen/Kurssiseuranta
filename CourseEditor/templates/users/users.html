@@ -8,9 +8,7 @@
     {% if users is defined %}
     {% for user in users %}
     <tr>
-      <td>
-        <th>{{ user.firstname }} {{ user.lastname }}</th>
-      </td>
+      <td>{{ user.firstname }} {{ user.lastname }}</td>
       {% if user.role_id == 1 %}
       <td>
         <form method="POST" action="{{ url_for('make_admin', user_id=user.id) }}">
