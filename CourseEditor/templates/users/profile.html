@@ -29,6 +29,9 @@
     <form method="GET" action="{{ url_for('show_users') }}">
       <input type="submit" value="Myönnä oikeuksia"/>
     </form> 
+    <form method="GET" action="{{ url_for('show_stats') }}">
+      <input type="submit" value="Katsele tilastoja"/>  
+    </form>
   {% endif %}
   <a href="/users/menu.html">
     <button>Takaisin valikkoon</button>

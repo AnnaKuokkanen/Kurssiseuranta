@@ -84,6 +84,11 @@ def make_admin(user_id):
     db.session().commit()
     return redirect(url_for("show_users"))
 
+@app.route("/users/statistics.html", methods=["GET"])
+@login_required(role="ADMIN")
+def show_stats():
+    return render_template("users/statistics.html")
+
 @app.route("/users/profile.html/<user_id>", methods=["POST"])
 @login_required
 def delete_profile(user_id):

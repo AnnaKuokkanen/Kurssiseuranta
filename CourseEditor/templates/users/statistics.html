@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>
+    Tilastoja sovelluksesta
+  </h1>
+  <table method="GET" action="{{ url_for('show_stats') }}">
+    <tr>
+      <p>Kurssien määrä:</p>
+    </tr>
+    <tr>
+      <p>Rekisteröityneiden määrä:</p>
+    </tr>
+    <tr>
+      <p>Suurin osallistujamäärä yhdellä kurssilla:</p>
+    </tr>
+    <tr>
+      <p>Suunniteltujen kurssien ka määrä:</p>
+    </tr>
+    <tr>
+      <p>Suoritettujen kurssien ka määrä:</p>
+    </tr>
+  </table>
+  <a href="/users/profile.html">
+    <button>Takaisin</button>
+  </a>
+{% endblock %}
