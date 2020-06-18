@@ -26,6 +26,7 @@
   {% if user.role_id == 2 %}
     <h3>Sinulla on Admin-oikeudet</h3>
     <p>Saat myöntää oikeudet muille käyttäjille</p>
+    <p>ja tarkastella sovelluksen käyttöön liittyviä tilastoja</p>
     <form method="GET" action="{{ url_for('show_users') }}">
       <input type="submit" value="Myönnä oikeuksia"/>
     </form> 
