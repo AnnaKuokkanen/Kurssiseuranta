@@ -61,5 +61,5 @@ WHERE User.id = current_user.id
 
 ```
 DELETE FROM User
-EHRE User.id = current_user.id
+WHERE User.id = current_user.id
 ```
