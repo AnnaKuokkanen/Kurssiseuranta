@@ -35,9 +35,6 @@ tulevaisuudessa tai jotka hän on jo suorittanut. Opiskelija voi poistaa kurssej
 
 ## Kirjautuminen
 
-Sovellukseen rekisteröidytään tavallisena käyttäjänä. Tässä tunnukset, joilla saa käyttöönsä admin-tasoisen käyttäjän:
-```
-käyttäjänimi: ellavirta
-salasana: salasana
-```
-Admin-tasoinen käyttäjä saa antaa admin-oikeudet muille käyttäjille. 
+Sovellukseen voi rekisteröityä tavallisena tai admin-tasoisena käyttäjänä. 
+Adminilla on oikeus myöntää oikeudet muille käyttäjille sekä tarkastella sovellukseen ja muihin
+käyttäjiin liittyviä tietoja. 
