@@ -87,16 +87,16 @@ class User(Base):
             response.append(row[0])
 
         # Searching biggest from number of students per course
-        #stmt = text("SELECT MAX(students) "
-                    #"FROM (SELECT COUNT(account_course.user_id) AS students FROM account_course "
-                    #"GROUP BY account_course.course_id)")
-        #res = db.engine.execute(stmt)
+        stmt = text("SELECT MAX(students) "
+                    "FROM (SELECT COUNT(account_course.user_id) AS students FROM account_course "
+                    "GROUP BY account_course.course_id) AS students")
+        res = db.engine.execute(stmt)
 
-        #for row in res:
-            #if row[0] is None:
-                #response.append(0)
-            #else:
-                #response.append(row[0])
+        for row in res:
+            if row[0] is None:
+                response.append(0)
+            else:
+                response.append(row[0])
 
         # Counting particular user's completed courses
         stmt = text("SELECT COUNT(Course.id) FROM Course "
