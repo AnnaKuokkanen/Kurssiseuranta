@@ -45,8 +45,8 @@ WHERE Course.name = ?
 ### Käyttäjänä haluan poistaa lisäämiäni kursseja.  
 
 ```
-DELETE FROM Course
-WHERE Course.id = ?
+DELETE FROM account_course
+WHERE account_course.course_id = Course.id AND account_course.user_id = current_user.id
 ```
 
 ### Käyttäjänä haluan muokata henkilötietojani
