@@ -10,10 +10,7 @@ from flask_login import current_user
 @app.route("/courses/courses.html", methods=["GET"])
 @login_required
 def courses_list():
-    user = User.query.get(current_user.id)
-    role_id = user.role_id
     courses = Course.list_course_and_teacher(current_user.id)
-    courses.insert(0, role_id)
     return render_template("courses/courses.html", form = SearchForm(), courses = courses)
 
 @app.route("/course/courses.html", methods=["POST"])
@@ -27,9 +24,8 @@ def courses_search():
     return render_template("courses/list.html", courses = Course.find_course_and_teacher(current_user.id, form.name.data))
 
 @app.route("/course/courses.html/<course_id>", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required()
 def courses_delete(course_id):
-
     User.remove_row(current_user.id, course_id)
     db.session().commit()
 
