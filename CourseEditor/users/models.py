@@ -88,7 +88,7 @@ class User(Base):
 
         # Searching biggest from number of students per course
         stmt = text("SELECT MAX(students) "
-                    "FROM (SELECT COUNT(account_course.user_id) AS students FROM account_course "
+                    "FROM (SELECT COUNT(account_course.user_id) students FROM account_course "
                     "GROUP BY account_course.course_id)")
         res = db.engine.execute(stmt)
 
