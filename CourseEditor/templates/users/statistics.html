@@ -6,19 +6,28 @@
   </h1>
   <table method="GET" action="{{ url_for('show_stats') }}">
     <tr>
-      <p>Kurssien määrä:</p>
+      <p>Kurssien määrä: {{ stats[0] }}</p>
     </tr>
     <tr>
-      <p>Rekisteröityneiden määrä:</p>
+      <p>Rekisteröityneiden määrä: {{ stats[1]+stats[2] }}</p>
     </tr>
     <tr>
-      <p>Suurin osallistujamäärä yhdellä kurssilla:</p>
+      <p>...joista tavallisia käyttäjiä: {{ stats[1] }}</p>
     </tr>
     <tr>
-      <p>Suunniteltujen kurssien ka määrä:</p>
+      <p>...ja admin-tasoisia käyttäjiä: {{ stats[2] }}</p>
     </tr>
     <tr>
-      <p>Suoritettujen kurssien ka määrä:</p>
+      <p>Käyttäjiä, jotka ovat lisänneet vähintään yhden kurssin: {{ stats[3] }}</p>
+    </tr>
+    <tr>
+      <p>Suurin osallistujamäärä yhdellä kurssilla: {{ stats[4] }}</p>
+    </tr>
+    <tr>
+      <p>Sinulla on yhteensä {{ stats[5] }} kpl suoritettuja kursseja</p>
+    </tr>
+    <tr>
+      <p>Valitsemiasi kursseja opettaa {{ stats[6] }} eri opettajaa</p>
     </tr>
   </table>
   <a href="/users/profile.html">

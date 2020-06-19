@@ -49,12 +49,72 @@ class User(Base):
     
     @staticmethod
     def list_all_users():
-        stmt = text("SELECT id, firstname, lastname, role_id FROM account ")
+        stmt = text("SELECT id, firstname, lastname, role_id FROM account")
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
             response.append({"id":row[0], "firstname":row[1], "lastname":row[2], "role_id":row[3]})
+
+        return response
+
+    @staticmethod
+    def count_statistics(user_id):
+        response = []
+
+        stmt = text("SELECT COUNT(DISTINCT course_id) FROM account_course")
+        res = db.engine.execute(stmt)
+
+        for row in res:
+            response.append(row[0])
+        
+        stmt = text("SELECT COUNT(*) FROM account WHERE role_id = :role").params(role=1)
+        res = db.engine.execute(stmt)
+
+        for row in res:
+            response.append(row[0])
+        
+        stmt = text("SELECT COUNT(*) FROM account WHERE role_id = :role").params(role=2)
+        res = db.engine.execute(stmt)
+
+        for row in res:
+            response.append(row[0])
+
+        stmt = text("SELECT COUNT(DISTINCT user_id) FROM account_course")
+        res = db.engine.execute(stmt)
+
+        for row in res:
+            response.append(row[0])
+
+        # Searching biggest from number of students per course
+        stmt = text("SELECT MAX(students) "
+                    "FROM (SELECT COUNT(account_course.user_id) AS students FROM account_course "
+                    "GROUP BY account_course.course_id)")
+        res = db.engine.execute(stmt)
+
+        for row in res:
+            if row[0] is None:
+                response.append(0)
+            else:
+                response.append(row[0])
+
+        # Counting particular user's completed courses
+        stmt = text("SELECT COUNT(Course.id) FROM Course "
+                    "LEFT JOIN account_course ON Course.id = account_course.course_id "
+                    "WHERE account_course.user_id = :user AND account_course.completed = :completed").params(user=user_id, completed=True)
+        res = db.engine.execute(stmt)
+
+        for row in res:
+            response.append(row[0])
+        
+        # Counting how many different teachers particular user has
+        stmt = text("SELECT COUNT(Course.teacher_id) FROM Course "
+                    "LEFT JOIN account_course ON Course.id = account_course.course_id "
+                    "WHERE account_course.user_id = :user").params(user=user_id)
+        res = db.engine.execute(stmt)
+
+        for row in res:
+            response.append(row[0])
 
         return response
 

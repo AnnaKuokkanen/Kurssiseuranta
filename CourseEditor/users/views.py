@@ -87,7 +87,7 @@ def make_admin(user_id):
 @app.route("/users/statistics.html", methods=["GET"])
 @login_required(role="ADMIN")
 def show_stats():
-    return render_template("users/statistics.html")
+    return render_template("users/statistics.html", stats = User.count_statistics(current_user.id))
 
 @app.route("/users/profile.html/<user_id>", methods=["POST"])
 @login_required
