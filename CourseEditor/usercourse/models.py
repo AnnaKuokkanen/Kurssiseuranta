@@ -1,5 +1,4 @@
 from CourseEditor import db
-#from sqlalchemy.sql import text
 from sqlalchemy import Table, Integer, ForeignKey, Column
 
 class UserCourse(db.Model):
@@ -14,8 +13,3 @@ class UserCourse(db.Model):
         self.course_id = course_id
         self.completed = completed
         self.planned = planned
-
-
-# UserCourse = db.Table('account_course',
-#                         db.Column('user_id', db.Integer, db.ForeignKey('account.id', ondelete='cascade'), primary_key=True), 
-#                         db.Column('course_id', db.Integer, db.ForeignKey('course.id', ondelete='cascade'), primary_key=True))

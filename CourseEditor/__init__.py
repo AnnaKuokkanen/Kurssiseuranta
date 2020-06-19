@@ -1,8 +1,8 @@
-# Flask-sovellus
+# Flask application
 from flask import Flask
 app = Flask(__name__)
 
-# Tietokanta
+# Database
 from flask_sqlalchemy import SQLAlchemy
 import os 
 
@@ -14,7 +14,7 @@ else:
 
 db = SQLAlchemy(app)
 
-# Kirjautuminen 
+# Log in
 from CourseEditor.users.models import User
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
@@ -26,7 +26,7 @@ login_manager.init_app(app)
 login_manager.login_view = "users_login_form"
 login_manager.login_message = "Kirjaudu sisään, ole hyvä"
 
-# Käyttäjäroolit
+# User roles
 from functools import wraps
 
 def login_required(_func=None, *, role="ANY"):
@@ -46,7 +46,7 @@ def login_required(_func=None, *, role="ANY"):
     return wrapper if _func is None else wrapper(_func)
 
 
-# Oma sovellus
+# Application
 from CourseEditor import views
 
 from CourseEditor.courses import models, views

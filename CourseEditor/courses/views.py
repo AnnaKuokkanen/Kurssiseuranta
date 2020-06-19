@@ -83,6 +83,7 @@ def courses_update(course_id):
     
     return create_or_update(c, t, form.teacher_firstname.data, form.teacher_lastname.data, form.name.data, form.content.data, form.time.data, completed, planned)
 
+# This method checks if course and/or teacher already exist in database
 def create_or_update(c, t, teacher_firstname, teacher_lastname, course_name, course_content, course_time, completed, planned):
 
     if t is None:
